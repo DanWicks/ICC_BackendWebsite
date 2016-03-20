@@ -180,21 +180,8 @@
             $userMenu = "<a href=\"./staff-dashboard.php\">Home</a><a href=\"./staff-update.php\">Upadte Information</a><a href=\"./staff-availability.php\">Availability</a><a href=\"./logout.php\">Logout</a>" ;
         } else if ($_SESSION['staff_type'] == "S") {
             $userMenu =  "<a href=\"./supervisor-dashboard.php\">Home</a><a href=\"./supervisor-update.php\">Update Information</a><a href=\"./supervisor-siteinfo.php\">Site Information</a><a href=\"./supervisor-schedules.php\">Schedules</a><a href=\"./supervisor-supplies.php\">Supplies</a><a href=\"./supervisor-equipment.php\">Equipment</a><a href=\"./logout.php\">Logout</a>";
-        } else if (isset($_SESSION['staff_type']) && ($_SESSION['staff_type'] == 'A')){
-            if (isset($_SESSION['sub_menu']) && ($_SESSION['sub_menu'] == 'A'))  {
-                $userMenu = "<b><a href=\"./admin-dashboard.php\">Administration Menu</a></b><a href=\"./admin-site.php?sub_menu=S \">Website Administration</a><a href=\"./admin-staff.php?sub_menu=E \">Staff Information</a><a href=\"./admin-clients.php?sub_menu=C \">Client Information</a><a href=\"./admin-locations.php?sub_menu=L \">Location Information</a><a href=\"./admin-assets.php?sub_menu=P\">Equip. and Supplies</a><a href=\"./logout.php\">Logout</a>";    
-            } else if (isset($_SESSION['sub_menu']) && ($_SESSION['sub_menu'] == 'E')) {
-                $userMenu = "<a href=\"./admin-dashboard.php?sub_menu=A\">Return to Admin Menu</a><b><a href=\"./admin-staff.php\">Staff Admin Home</a></b><a href=\"./admin-staffcreate.php\">Enter New Staff</a><a href=\"./admin-schedule.php\">Scheduling</a><a href=\"./admin-availibilty.php\">Staff Availibility</a><a href=\"./logout.php\">Logout</a>";
-            }
-            else if (isset($_SESSION['sub_menu']) && ($_SESSION['sub_menu'] == 'C')) {
-                $userMenu = "<a href=\"./admin-dashboard.php?sub_menu=A\">Return to Admin Menu</a><b><a href=\"./admin-clients.php\">Client Admin Home</a></b><a href=\"./admin-createclients.php\">Enter New Clients</a><a href=\"./admin-clientinfo.php\">Maintain Clients</a><a href=\"./admin-clientcontracts.php\">Maintain Contracts</a><a href=\"./admin-assessments.php\">Maintain Assessments</a><a href=\"./logout.php\">Logout</a>";
-            }
-            else if (isset($_SESSION['sub_menu']) && ($_SESSION['sub_menu'] == 'L')) {
-                $userMenu = "<a href=\"./admin-dashboard.php?sub_menu=A\">Return to Admin Menu</a><b><a href=\"./admin-locations.php\">Location Info Home</a></b><a href=\"./admin-createsites.php\">Create New Sites</a><a href=\"./admin-sites.php\">Maintain Sites</a><a href=\"./admin-createlocation.php\">Create Locations</a><a href=\"./admin-locationinfo.php\">Maintain Locations</a><a href=\"./admin-servicesreq.php\">Required Services</a><a href=\"./admin-cleaningavailable.php\">Cleaning Availibilty</a><a href=\"./logout.php\">Logout</a>";
-            }
-            else if (isset($_SESSION['sub_menu']) && ($_SESSION['sub_menu'] == 'P')) {
-                $userMenu = "<a href=\"./admin-dashboard.php?sub_menu=A\">Return to Admin Menu</a><b><a href=\"./admin-assets.php\">Equip. and Supplies Home</a></b><a href=\"./admin-services.php\">Maintain Services</a><a href=\"./admin-vendors.php\">Maintain Vendors</a><a href=\"./admin-equipment.php\">Maintain Equipment</a><a href=\"./admin-supplies.php\">Maintain Supplies</a><a href=\"./logout.php\">Logout</a>";
-            }
+        } else if (isset($_SESSION['staff_type']) && ($_SESSION['staff_type'] == 'A')){          
+                $userMenu = "<b><a href=\"./admin-dashboard.php\">Administration Menu</a></b><a href=\"./admin-site.php\">Website Administration</a><a href=\"./admin-staff.php \">Staff Information</a><a href=\"./admin-clients.php\">Client Information</a><a href=\"./admin-assets.php\">Equip. and Supplies</a><a href=\"./logout.php\">Logout</a>";
         }                
         return $userMenu;
     }	

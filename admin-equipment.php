@@ -2,9 +2,13 @@
 
 <div class="w3-row-padding">
 
+    <h2><b>Maintain Equipment</b></h2>
+    
+    <p><a href="./admin-assets.php">Return to Equip and Supplies</a></p>
+
 <div class="w3-half">
 
-    <h2>Maintain Equipment</h2>
+    
     <br/>
     <label class="icclabel">First Name</label><input></input><br/><br/>
     <label class="icclabel">Last Name</label><input></input><br/><br/>

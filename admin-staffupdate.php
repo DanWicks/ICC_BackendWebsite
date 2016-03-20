@@ -84,7 +84,7 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
  
-<h2>Update Staff Information</h2>  
+    <h2><b>Update Staff Information</b></h2>  
 
 <div class="w3-third">
     

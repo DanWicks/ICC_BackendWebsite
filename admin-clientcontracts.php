@@ -1,11 +1,22 @@
 <?php include("header.php"); ?>  
 
+<?php
+$site_id = "";
+     if (isset($_GET['site_id'])){		
+        $site_id = $_GET['site_id'];       
+    } else {
+        redirect ("./admin-clientinfo.php");
+    }
+?>
+
 <div class="w3-row-padding">
+
+    <h2><b>Client Contracts</b></h2>
+    
+    <p><a href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">View Site Information </a></a>
 
 <div class="w3-half">
 
-    <h2>Maintain Contracts</h2>
-    <br/>
     <label class="icclabel">First Name</label><input></input><br/><br/>
     <label class="icclabel">Last Name</label><input></input><br/><br/>
     <label class="icclabel">Address</label><input></input><br/><br/>
@@ -19,8 +30,7 @@
 </div>
 
 <div class="w3-half">
-
-  <h2>  Schedule</h2>  
+  
   <label class="icclabel">Sunday</label><input></input><br/><br/>
   <label class="icclabel">Monday</label><input></input><br/><br/>
   <label class="icclabel">Tuesday</label><input></input><br/><br/>

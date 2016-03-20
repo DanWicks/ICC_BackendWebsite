@@ -1,5 +1,10 @@
 <?php include("header.php"); 
     $site_id = "";
+     if (isset($_GET['site_id'])){		
+        $site_id = $_GET['site_id'];       
+    } else {
+        redirect ("./admin-clientinfo.php");
+    }
     $client_id = "";
     $location_id = "";
     $entry_method_id = "";
@@ -9,12 +14,7 @@
     $client_first_name = "";
     $client_last_name = "";
     $client_full_name = "";
-    $client = "";
-    if (isset($_GET['site_id'])){		
-        $site_id = $_GET['site_id'];       
-    } else {
-        redirect ("./admin-clientinfo.php");
-    }
+    $client = "";   
     $client_id = get_table_info(SITE, 'site_client_id', 'site_id', $site_id, 'site_client_id');
     $location_id = get_table_info(SITE, 'site_location_id', 'site_id', $site_id, 'site_location_id');
     $requirements_id = get_table_info(CONT, 'requirements_id', 'site_id', $site_id, 'requirements_id');
@@ -30,11 +30,13 @@
 
 <div class="w3-row-padding">
 
-<h3>Site : <?php echo $client . "(".$site_id.")"; ?></h3>
+    <h3><b>Site : <?php echo $client . "(".$site_id.")"; ?></b></h3>
+    
+    <p><a href="./admin-clients.php">Client Dashboard</a> / <a href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">Return to Client Information </a> / <a href="./admin-sitesupdate.php?site_id=<?php echo $site_id; ?> ">Edit Site Information </a></p>
 
 <div class="w3-third">
     
-    <a href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">Return to Client Information </a>
+    
     <h3>Contact Information</h3>
     <label class="icclabel">Client ID</label><?php echo $client_id; ?><br/><br/>
     <label class="icclabel">Client Name</label><label><?php echo $client_name; ?></label><br/><br/>
@@ -48,7 +50,6 @@
 
 <div class="w3-third">
 
-    <br/>
     <h3>Location Information</h3>
     <label class="icclabel">Address 1</label><label><?php echo get_table_info(LOCA, 'client_address1', 'location_id', $location_id, 'client_address1'); ?></label><br/><br/>
     <label class="icclabel">Address 2</label><label><?php echo get_table_info(LOCA, 'client_address2', 'location_id', $location_id, 'client_address2'); ?></label><br/><br/>
@@ -62,14 +63,21 @@
 
 <div class="w3-third">
     
-    <br/>
     <h3>Site Specifications</h3>
-    <label class="icclabel"> Contract Start Date</label><label><?php echo get_table_info(CONT, 'contract_start_date', 'site_id', $site_id, 'contract_start_date'); ?></label><br/><br/>    
-    <label class="icclabel"> Contract End Date</label><label><?php echo get_table_info(CONT, 'contract_end_date', 'site_id', $site_id, 'contract_end_date'); ?></label><br/><br/>
-    <label class="icclabel">Required Staff</label><label><?php echo get_table_info(SITR, 'sr_staff_number', 'requirements_id', $requirements_id, 'sr_staff_number'); ?></label><br/><br/>
+    <p><a href="./admin-clientcontracts.php?site_id=<?php echo $site_id; ?> ">Site Contracts</a></p>
+    <label class="icclabel"> Contract Start Date</label><label><?php echo get_table_info(CONT, 'contract_start_date', 'site_id', $site_id, 'contract_start_date'); ?></label><br/>    
+    <label class="icclabel"> Contract End Date</label><label><?php echo get_table_info(CONT, 'contract_end_date', 'site_id', $site_id, 'contract_end_date'); ?></label><br/>
+    
+    <p><a href="./admin-siterequirements.php?site_id=<?php echo $site_id; ?> ">Site Requirements</a></p>
+    <label class="icclabel">Required Staff</label><label><?php echo get_table_info(SITR, 'sr_staff_number', 'requirements_id', $requirements_id, 'sr_staff_number'); ?></label>
+    
+    <p><a href="./admin-servicesreq.php?site_id=<?php echo $site_id; ?> ">Services Required</a></p>
     <?php echo buildSiteServiceTable($site_id); ?>
-    <br/>
+    
+    <p><a href="./admin-equipmentreq.php?site_id=<?php echo $site_id; ?> ">Equipment Required</a></p>
     <?php echo buildSiteEquipmentTable($requirements_id); ?>
+    
+    <p><a href="./admin-assessments.php?site_id=<?php echo $site_id; ?> ">Site Assessment</a></p>
  
 </div>
 

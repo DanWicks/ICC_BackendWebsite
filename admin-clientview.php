@@ -24,11 +24,12 @@
 
 <div class="w3-row-padding">
 
-<h3>Client : <?php  echo $client;   ?></h3>
+    <h3><b>Client : <?php  echo $client;   ?></b></h3>
+    
+    <p><a href="./admin-clients.php">Return to Client Dashboard</a> / <a href="<?php echo $redirect; ?>">Edit Client Information</a></p>
 
 <div class="w3-third">
 
-    <p><a href="./admin-clientinfo.php">Return to Client Listings</a> / <a href="<?php echo $redirect; ?>">Edit Client Information</a></p>
     <h3>Contact Information</h3>
     <label class="icclabel">Client ID</label><?php echo $client_id; ?><br/><br/>
     <label class="icclabel">Client Name</label><label><?php echo $client_name; ?></label><br/><br/>
@@ -43,7 +44,6 @@
 
 <div class="w3-third">
   
-    <br/><br/>
     <h3>Location Information</h3>
     <label class="icclabel">Address 1</label><label><?php echo get_table_info(LOCA, 'client_address1', 'location_id', $location_id, 'client_address1'); ?></label><br/><br/>
     <label class="icclabel">Address 2</label><label><?php echo get_table_info(LOCA, 'client_address2', 'location_id', $location_id, 'client_address2'); ?></label><br/><br/>
@@ -56,7 +56,6 @@
 
 <div class="w3-third">
     
-    <br/><br/>
     <h3>Cleaning Sites Information</h3>
     <?php echo builClientSitesTable($client_id); ?>    
   

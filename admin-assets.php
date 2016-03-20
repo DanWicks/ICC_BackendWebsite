@@ -1,13 +1,5 @@
-<?php
-   
+<?php   
     include("header.php"); 
-    
-    if (isset($_GET['sub_menu'])){
-		$SubMenu = isset($_GET['sub_menu'])?($_GET['sub_menu']):'C';
-		$_SESSION['sub_menu'] = $SubMenu;
-        $_SESSION['dashboard'] = "Equip. and Supplies";
-        redirect ("./admin-assets.php");
-	}
 ?> 
 
 <div class="w3-row-padding">
@@ -29,26 +21,22 @@
         <ul>
         <li>Main landing page for Administrators and Owners for the Equipment and Supplies menu.</li>
         </ul>
-    <li><b>Maintain Services</b></li>
+    <li><b><a href="./admin-services.php">Maintain Services</a></b></li>
         <ul>
         <li>Maintain the information for I.C.C Services that are available.</li>
         </ul>
-    <li><b>Maintain Vendors</b></li>
+    <li><b><a href="./admin-vendors.php">Maintain Vendors</a></b></li>
         <ul>
         <li>Create new Locations for Vendor information.</li>
         </ul>
-    <li><b>Maintain Equipment</b></li>
+    <li><b><a href="./admin-equipment.php">Maintain Equipment</a></b></li>
         <ul>
         <li>Maintain the information for Equipment information.</li>
         </ul>
-    <li><b>Maintain Supplies</b></li>
+    <li><b><a href="./admin-supplies.php">Maintain Supplies</a></b></li>
         <ul>
         <li>Maintain the Required Services for Supplies information.</li>
-        </ul>           
-     <li><b>Logout</b></li>
-        <ul>
-        <li>Logs the Current Staff member out of the System and send them to the Logout screen.</li>
-        </ul>
+        </ul>   
     </ul>
  
 </div>

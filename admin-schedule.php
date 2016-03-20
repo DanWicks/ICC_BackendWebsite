@@ -25,6 +25,10 @@
 
 <div class="w3-row-padding">
 
+    <h2><b>Staff Schedule</b></h2>    
+    
+    <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
+
 <div class="w3-third">
     
    <?php echo buildStaffTable(); ?>
@@ -33,7 +37,7 @@
 
 <div class="w3-twothird">
 
-    <h2>  Schedule</h2>    
+    
     <?php build_select_dropdown (STAF, $staff_id, STAFF);  ?>
     <?php build_select_dropdown (SITE, $staff_id, SITES);  ?>
     <?php build_drop_down_named(STME, $start_time,START); ?>

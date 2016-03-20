@@ -1,13 +1,5 @@
-<?php
-   
+<?php  
     include("header.php"); 
-    
-     if (isset($_GET['sub_menu'])){
-		$SubMenu = isset($_GET['sub_menu'])?($_GET['sub_menu']):'A';
-		$_SESSION['sub_menu'] = $SubMenu;
-        $_SESSION['dashboard'] = "Administration Dashboard";
-        redirect ("./admin-dashboard.php");
-	}
 ?> 
 
 <div class="w3-row-padding">
@@ -29,7 +21,7 @@
         <ul>
         <li>Main lannding page for Administrators and Owners that will contain general information and news items that are related to the Job at I.C.C., as well as displaying their current information.</li>
         </ul>
-    <li><b>Site Administration</b></li>
+    <li><b>Website Administration</b></li>
         <ul>
         <li>Maintain the site specific information that is used when creating, viewing and updating all of the Staff, Client, Vendor and Locations</li>
         </ul>
@@ -40,11 +32,7 @@
     <li><b>Client Information</b></li>
         <ul>
         <li>Access to the areas of the site for maintaining Clients, Contracts and Site Assesments.</li>
-        </ul>
-    <li><b>Location Information</b></li>
-        <ul>
-        <li>Access to all areas of the site for maintaining Sites, Locations and their Required Services and Cleaning availabilities.</li>
-        </ul>
+        </ul>    
     <li><b>Equipment and Supplies</b></li>
         <ul>
         <li>Access to all areas of the site for maintaining Services, Vendors, Equipment and Supplies.</li>

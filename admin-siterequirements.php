@@ -11,7 +11,7 @@ $site_id = "";
 
 <div class="w3-row-padding">
 
-    <h2><b>Location Assesment</b></h2>
+    <h2><b>Site Requirements</b></h2>
     
     <p><a href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">View Site Information </a></a>
 

@@ -1,13 +1,5 @@
-<?php
-   
+<?php   
     include("header.php"); 
-    
-     if (isset($_GET['sub_menu'])){
-		$SubMenu = isset($_GET['sub_menu'])?($_GET['sub_menu']):'E';
-		$_SESSION['sub_menu'] = $SubMenu;
-        $_SESSION['dashboard'] = "Staff Information";
-        redirect ("./admin-staff.php");
-	}
 ?> 
 
 <div class="w3-row-padding">
@@ -29,22 +21,18 @@
         <ul>
         <li>Main landing page for Administrators and Owners for the Staff Information menu.</li>
         </ul>
-    <li><b>Enter New Staff</b></li>
+    <li><b><a href="./admin-staffcreate.php">Enter New Staff</a></b></li>
         <ul>
         <li>Enter New staff information into the I.C.C. database.</li>
         </ul>   
-    <li><b>Maintain Schedule</b></li>
+    <li><b><a href="./admin-schedule.php">Scheduling</a></b></li>
         <ul>
         <li>Maintain the information for Staff Schedules.</li>
         </ul>
-    <li><b>Staff Availibilty</b></li>
+    <li><b><a href="./admin-availibilty.php">Staff Availibility</a></b></li>
         <ul>
         <li>Maintain the information for Staff Availabilities for scheduling.</li>
-        </ul>              
-     <li><b>Logout</b></li>
-        <ul>
-        <li>Logs the Current Staff member out of the System and send them to the Logout screen.</li>
-        </ul>
+        </ul>    
     </ul>
  
 </div>

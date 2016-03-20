@@ -47,7 +47,9 @@
         $cl_postal_code = trim(pg_fetch_result($resultlocation, 'client_postal_code'));
         $cl_phone_number = trim(pg_fetch_result($resultlocation, 'client_phone_number'));
         $cl_email_address = trim(pg_fetch_result($resultlocation, 'client_email_address'));
-        $contact_id = trim(pg_fetch_result($resultlocation, 'contact_id'));  
+        $contact_id = trim(pg_fetch_result($resultlocation, 'contact_id')); 
+      
+        $client = ($client_name == "")?$client_full_name:$client_name   ;          
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST"){
         $cl_phone_number = "";
@@ -73,6 +75,7 @@
         
         $result = pg_prepare($conn, "user_insert_query", 'UPDATE client_locations SET client_first_name=$2, client_last_name=$3, client_address1=$4, client_address2=$5, city_id=$6, province_id=$7, country_id=$8, client_postal_code=$9, client_phone_number=$10, client_email_address=$11, contact_id=$12 WHERE location_id = $1');
 		$result = pg_execute($conn, "user_insert_query", array($location_id, $cl_first_name, $cl_last_name, $cl_address1, $cl_address2, $cl_city, $province_id, $country_id, $cl_postal_code, $cl_phone_number, $cl_email_address, $contact_id));  
+  
     }
 ?>    
 
@@ -80,11 +83,12 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
 
-<h3>Client : <?php  echo $client;   ?></h3>
+    <h3><b>Client : <?php  echo $client;   ?></b></h3>
+
+    <p><a href="./admin-clients.php">Return to Client Dashboard</a> / <a href="<?php echo $redirect; ?>">View Client Information</a></p>
 
 <div class="w3-third">
-
-    <p><a href="./admin-clientinfo.php">Return to Client Listings</a> / <a href="<?php echo $redirect; ?>">View Client Information</a></p>
+    
     <h3>Contact Information (<?php echo $client_id; ?>) </h3>    
     <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name; ?>" /><br/><br/>   
     <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
@@ -98,7 +102,6 @@
 
 <div class="w3-third">
   
-    <br/><br/>
     <h3>Location Information (<?php echo $location_id ?>)</h3>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
     <label class="icclabel">Address 2</label><input name="cl_address2" value="<?php echo $cl_address2 ?>" /><br/><br/>

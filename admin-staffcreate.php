@@ -67,7 +67,9 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
  
-    <h2>Enter New Staff Information</h2>  
+    <h2><b>Enter New Staff Information</b></h2>  
+    
+    <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
  
 <div class="w3-third">
    

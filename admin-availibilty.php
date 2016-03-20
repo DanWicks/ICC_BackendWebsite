@@ -2,10 +2,12 @@
 
 <div class="w3-row-padding">
 
+    <h2><b>Maintain Staff Availability</b></h2>
+
+    <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
+
 <div class="w3-half">
 
-    <h2>Maintain Staff Availability</h2>
-    <br/>
     <label class="icclabel">First Name</label><input></input><br/><br/>
     <label class="icclabel">Last Name</label><input></input><br/><br/>
     <label class="icclabel">Address</label><input></input><br/><br/>
@@ -19,8 +21,7 @@
 </div>
 
 <div class="w3-half">
-
-  <h2>  Schedule</h2>  
+ 
   <label class="icclabel">Sunday</label><input></input><br/><br/>
   <label class="icclabel">Monday</label><input></input><br/><br/>
   <label class="icclabel">Tuesday</label><input></input><br/><br/>
