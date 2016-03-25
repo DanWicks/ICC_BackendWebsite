@@ -29,22 +29,8 @@
     
     <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
 
-<div class="w3-third">
-    
-   <?php echo buildStaffTable(); ?>
-    
-</div>
-
-<div class="w3-twothird">
-
-    
-    <?php build_select_dropdown (STAF, $staff_id, STAFF);  ?>
-    <?php build_select_dropdown (SITE, $staff_id, SITES);  ?>
-    <?php build_drop_down_named(STME, $start_time,START); ?>
-    <?php build_drop_down_named(STME, $start_time,END); ?>
-    
-</div>
-
+    <?php build_schedule(); ?><br/><br/>
+     
 </div>
 
 <?php include("footer.php"); ?> 

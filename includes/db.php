@@ -772,4 +772,76 @@
 		}	
         echo "</ul>";
 	}
+    
+     // Build Schedule
+	//===============================================================
+	function build_schedule (){
+        $weekNumber = date("W") + 1; 
+        $yearNumber = date("Y");  
+        $mon = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."1") ); 
+        $tue = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."2") ); 
+        $wed = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."3") ); 
+        $thu = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."4") ); 
+        $fri = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."5") ); 
+        $sat = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."6") ); 
+        $sun = date( "l, M jS", strtotime($yearNumber."W".$weekNumber."7") ); 
+		$staff_id = "";
+		$staff_first = "";
+        $staff_last = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM staff";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);		
+        echo "<table border=\"1\"><tr><td colspan=\"5\">Week Number : ".($weekNumber + 1)."</td></tr>\n";
+        echo "<tr><td>Staff Name</td><td>".$mon."</td><td>".$tue."</td><td>".$wed."</td><td>".$thu."</td><td>".$fri."</td><td>".$sat."</td><td>".$sun."</td>\n";
+		for($i = 0; $i < $records; $i++){			
+			$staff_id = pg_fetch_result($result, $i, "staff_id");
+			$staff_first = pg_fetch_result($result, $i, "staff_first");
+            $staff_last = pg_fetch_result($result, $i, "staff_last");
+			
+			
+            echo "<tr><td><input type=\"hidden\" name=\"staff_id[]\" value=\"".$staff_id."\">".$staff_last .", ".$staff_first."</td>            
+            <td><input name=\"mons[]\" class=\"resizedTextbox\" /><input name=\"mone[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("monl[]")."</td>
+            <td><input name=\"tues[]\" class=\"resizedTextbox\" /><input name=\"tuee[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("tuel[]")."</td>
+            <td><input name=\"weds[]\" class=\"resizedTextbox\" /><input name=\"wede[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("wedl[]")."</td>
+            <td><input name=\"thus[]\" class=\"resizedTextbox\" /><input name=\"thue[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("thul[]")."</td>
+            <td><input name=\"fris[]\" class=\"resizedTextbox\" /><input name=\"frie[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("fril[]")."</td>
+            <td><input name=\"sats[]\" class=\"resizedTextbox\" /><input name=\"sate[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("satl[]")."</td>
+            <td><input name=\"suns[]\" class=\"resizedTextbox\" /><input name=\"sune[]\" class=\"resizedTextbox\" />".ddl_schedule_sites("sunl[]")."</td>
+            \n";
+		}	
+        echo "</table>";
+	}
+    
+    // Build Drop Down Schedule
+	//===============================================================
+	function ddl_schedule_sites ($name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";
+        $returnddl = "";
+        $client_name = "";
+		$conn 		= db_connect();
+        
+		$sqldrop 	= "SELECT * FROM sites";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);       
+
+        
+		$returnddl = "\n<select class=\"schedule\" name=\"".$name."\">\n";	
+		for($i = 0; $i < $records; $i++){	
+			$value = pg_fetch_result($result, $i, "site_id");
+			$property = pg_fetch_result($result, $i, "site_client_id");
+            
+                $sqlname 	= "SELECT * FROM clients WHERE client_id='".$property."'";
+                $resultname = pg_query($conn, $sqlname);               
+                $client_name = trim(pg_fetch_result($resultname, "client_name"));
+                
+			$selected =($preselected == $value)? "selected='selected'":"";
+			$returnddl .= "\t<option value='".$value."' ".$selected.">".$client_name."</option>\n";
+		}						
+		$returnddl .= "</select>\n\n";	
+        return $returnddl;
+	}
 ?>

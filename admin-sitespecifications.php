@@ -83,12 +83,14 @@ $conn = db_connect();
         $_SESSION['isCurrentContract'] = $isCurrentContract;
         $services = "";
         $equipment = "";
-        $redirect = "./admin-sitespecifications.php?site_id=".$site_id;
+        $redirect = "./admin-sitesinfo.php?site_id=".$site_id;
     }
     else if($_SERVER["REQUEST_METHOD"] == "POST"){
+       
         $isCurrentContract = $_SESSION['isCurrentContract'];
         $client_id = $_SESSION['client_id'];
         $site_id = $_SESSION['site_id'];
+        $redirect = "./admin-sitesinfo.php?site_id=".$site_id;
         $contract_id = $_SESSION['contract_id'];
         $requirements_id = $_SESSION['requirements_id'];
         $location_id = $_SESSION['location_id'];
@@ -100,7 +102,7 @@ $conn = db_connect();
         $contract_requirements = trim($_POST['contract_requirements']);
         
         if (!isset ($_POST['equip'])) {
-			$equip = "";
+			$equip = 0;
 		}else{
             $equipment = ($_POST['equip']);
 			$equip = ($_POST['equip']);
@@ -109,8 +111,7 @@ $conn = db_connect();
 		}
         
         if (!isset ($_POST['service'])) {
-			$service = "";
-            
+			$service = 0;
 		}else{
             
             $services = ($_POST['service']);
@@ -127,8 +128,8 @@ $conn = db_connect();
             $resultscontract = pg_execute($conn, "contract_insert", array($contract_id, $site_id, $contract_requirements, $contract_create_date, $contract_start_date, $contract_end_date, $service, $equip, $required_staff)); 
         }       
         
-        $redirect = "./admin-sitespecifications.php?site_id=".$site_id;
-        //redirect($redirect);
+        //$redirect = "./admin-sitespecifications.php?site_id=".$site_id;
+        redirect($redirect);
     }
 ?>
 <script type="text/javascript">
@@ -163,7 +164,7 @@ $conn = db_connect();
 </script>
 <div class="w3-row-padding">
 
-    <h2><b>Site Specifications :<?php echo $isCurrentContract ?></b></h2>
+    <h2><b>Site Specifications</b></h2>
     
     <p><a href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">Return to Site Information </a></a>
     

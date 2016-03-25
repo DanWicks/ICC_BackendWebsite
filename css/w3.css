@@ -326,6 +326,9 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-text-dark-grey{color:#3a3a3a !important}.w3-dark-grey,.w3-hover-dark-grey:hover{color:#fff !important;background-color:#616161 !important}
 .w3-opacity,.w3-hover-opacity:hover{opacity:0.60}.w3-text-shadow{text-shadow:1px 1px 0 #444}.w3-text-shadow-white{text-shadow:1px 1px 0 #ddd}
 .icclabel { width:200px; display: inline-block;}
+.schedule{width:150px;}
+.resizedTextbox {width: 50px; height: 25px}
+.resizedLabel{width: 50px; height: 25px}
 #MenuName{
     position:relative;
     left:20px;
@@ -333,9 +336,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 select {
     width:220px;
 }
-input {
-    min-width:260px;
-}
+
 h2{
     font-style:bold;
 }
