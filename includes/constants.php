@@ -47,6 +47,8 @@
     define("SPEQ"       ,"specialty_equipment");
     define("CLST"       ,"client_status");
     define("STST"       ,"site_status");
+    define("SRVR"       ,"services_required");
+    define("SRVC"       ,"services");
     
     
     // Column Names

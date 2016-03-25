@@ -3627,21 +3627,6 @@ ALTER TABLE clients OWNER TO redline_admin;
 
 
 -- GROUP 3 TABLES ===================================================== --
--- SITE REQUIREMENTS ===================================================== --
-DROP TABLE IF EXISTS site_requirements;
-CREATE TABLE site_requirements
-(
-    requirements_id         VARCHAR(10) PRIMARY KEY,
-    sr_staff_number         INTEGER
-);
-PREPARE site_requirements_insert (text, numeric) AS
-    INSERT INTO site_requirements (requirements_id, sr_staff_number)
-    VALUES ($1, $2);   
-EXECUTE site_requirements_insert('SRE0000001', '5');
-EXECUTE site_requirements_insert('SRE0000002', '3');
-EXECUTE site_requirements_insert('SRE0000003', '4');
-EXECUTE site_requirements_insert('SRE0000004', '10');
-ALTER TABLE site_requirements OWNER TO redline_admin;
 
 -- SITES ===================================================== --
 DROP TABLE IF EXISTS sites;
@@ -3683,10 +3668,14 @@ CREATE TABLE staff(
 PREPARE staff_insert (text, text, text, text, numeric, text, text, text, text, text, text, text, text, text, text, text) AS
     INSERT INTO staff (staff_id, staff_password, staff_type_id, staff_status_id, staff_wage, staff_first, staff_last, staff_address1, staff_address2, city_id, province_id, country_id, staff_postal,  staff_phone, staff_email, contact_id)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
+EXECUTE staff_insert('AAA-ADMIN1', 'password', 'A', 'F', 50, 'Admin', 'Forbes', '1 Forbes Ave', '', 'Oshawa', 'ON', 'CA', 'L1L1L1', '9056664444', 'admin.Forbes@icc.com', 'E');
+EXECUTE staff_insert('AAA-SUPER1', 'password', 'S', 'F', 50, 'Super', 'Forbes', '1 Forbes Ave', '', 'Oshawa', 'ON', 'CA', 'L1L1L1', '9056664444', 'super.Forbes@icc.com', 'E');
+EXECUTE staff_insert('AAA-STAFF1', 'password', 'T', 'F', 50, 'Staff', 'Forbes', '1 Forbes Ave', '', 'Oshawa', 'ON', 'CA', 'L1L1L1', '9056664444', 'staff.Forbes@icc.com', 'E');
 EXECUTE staff_insert('STA0000001', 'password', 'A', 'F', 20, 'Anthony', 'Walton', '52 Walton Road', '', 'Bowmanville', 'ON', 'CA', 'K9A1F3', '9057784456', 'anthony.walton@icc.com', 'E');
 EXECUTE staff_insert('STA0000002', 'password', 'A', 'F', 30, 'Daniel', 'Wicks', '7784 Wicks Court', '', 'Oshawa', 'ON', 'CA', 'L5F1G2', '2894856512', 'daniel.wicks@icc.com', 'E');
 EXECUTE staff_insert('STA0000003', 'password', 'A', 'F', 40, 'Mark', 'Subit', '254 Subit Blvd.', '', 'Pickering', 'ON', 'CA', 'M8F1F4', '9056845569', 'mark.subit@icc.com', 'E');
 EXECUTE staff_insert('STA0000004', 'password', 'A', 'F', 50, 'Gavin', 'Shelley', '123 Gavin Street', '', 'Pickering', 'ON', 'CA', 'L1L1L1', '9056664444', 'gavin.shelley@icc.com', 'E');
+
 ALTER TABLE staff OWNER TO redline_admin;
 
 
@@ -3696,18 +3685,20 @@ DROP TABLE IF EXISTS client_contracts;
 CREATE TABLE client_contracts(
     contract_id             VARCHAR(10) PRIMARY KEY, 
     site_id                 VARCHAR(10) NOT NULL REFERENCES sites(site_id), 
-    requirements_id         VARCHAR(10) NOT NULL REFERENCES site_requirements(requirements_id),    
     contract_requirements   VARCHAR(255),
     contract_create_date    DATE,
     contract_start_date     DATE,
-    contract_end_date       DATE
+    contract_end_date       DATE,
+    required_services       INTEGER,
+    required_equipment      INTEGER,
+    required_staff          INTEGER
 );
 PREPARE client_contracts_insert (text, text, text) AS
-    INSERT INTO client_contracts (contract_id, site_id, requirements_id, contract_requirements, contract_create_date, contract_start_date, contract_end_date)
-    VALUES ($1, $2, $3, $4, $5, $6, $7);     
-EXECUTE client_contracts_insert('CON0000001', 'SIT0000001', 'SRE0000001', null, null, null, null);
-EXECUTE client_contracts_insert('CON0000002', 'SIT0000002', 'SRE0000002', null, null, null, null);
-EXECUTE client_contracts_insert('CON0000003', 'SIT0000003', 'SRE0000003', null, null, null, null);
+    INSERT INTO client_contracts (contract_id, site_id, contract_requirements, contract_create_date, contract_start_date, contract_end_date, required_services, required_equipment, required_staff)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);     
+EXECUTE client_contracts_insert('CON0000001', 'SIT0000001', null, null, null, null, 7, 3, 4);
+EXECUTE client_contracts_insert('CON0000002', 'SIT0000002', null, null, null, null, 12, 6, 5);
+EXECUTE client_contracts_insert('CON0000003', 'SIT0000003', null, null, null, null, 28, 7, 6);
 ALTER TABLE client_contracts OWNER TO redline_admin;
 
 -- EMPLOYEE SCHEDULE ===================================================== --
@@ -3769,11 +3760,11 @@ CREATE TABLE services
 PREPARE services_insert (text, text, numeric) AS
     INSERT INTO services (service_id, service_description, service_price)
     VALUES ($1, $2, $3);  
-EXECUTE services_insert('SER0000001', 'Dusting', 150);
-EXECUTE services_insert('SER0000002', 'Sweeping', 75);
-EXECUTE services_insert('SER0000003', 'Mopping', 90);
-EXECUTE services_insert('SER0000004', 'Deep-clean', 300);
-EXECUTE services_insert('SER0000005', 'Office Cleaning', 80);
+EXECUTE services_insert('1', 'Dusting', 150);
+EXECUTE services_insert('2', 'Sweeping', 75);
+EXECUTE services_insert('4', 'Mopping', 90);
+EXECUTE services_insert('8', 'Deep-clean', 300);
+EXECUTE services_insert('16', 'Office Cleaning', 80);
 ALTER TABLE services OWNER TO redline_admin;
 
 -- SPECIALTY EQUIPMENT  ===================================================== --
@@ -3881,9 +3872,9 @@ CREATE TABLE invoice_line_items
 PREPARE invoice_line_items_insert (text, text) AS
     INSERT INTO invoice_line_items (invoice_id, service_id)
     VALUES ($1, $2);  
-EXECUTE invoice_line_items_insert('INV0000001', 'SER0000001');
-EXECUTE invoice_line_items_insert('INV0000002', 'SER0000002');
-EXECUTE invoice_line_items_insert('INV0000003', 'SER0000003');
+EXECUTE invoice_line_items_insert('INV0000001', '1');
+EXECUTE invoice_line_items_insert('INV0000002', '2');
+EXECUTE invoice_line_items_insert('INV0000003', '4');
 ALTER TABLE invoice_line_items OWNER TO redline_admin;
 
 -- PAYROLL  ===================================================== --
@@ -3902,21 +3893,6 @@ EXECUTE payroll_insert('PAY0000002', 'SCH0000002', 145);
 EXECUTE payroll_insert('PAY0000003', 'SCH0000003', 360);
 ALTER TABLE payroll OWNER TO redline_admin;
 
--- REQUIRED EQUIPMENT  ===================================================== --
-DROP TABLE IF EXISTS required_equipment;
-CREATE TABLE required_equipment
-(
-    requirements_id         VARCHAR(10) NOT NULL REFERENCES site_requirements(requirements_id), 
-    equipment_id            VARCHAR(10) NOT NULL REFERENCES specialty_equipment(specialty_equipment_id),
-    PRIMARY KEY (requirements_id, equipment_id)
-);
-PREPARE required_equipment_insert (text, text) AS
-    INSERT INTO required_equipment (requirements_id, equipment_id)
-    VALUES ($1, $2);
-EXECUTE required_equipment_insert('SRE0000001', '1');
-EXECUTE required_equipment_insert('SRE0000002', '2');
-EXECUTE required_equipment_insert('SRE0000003', '4');
-ALTER TABLE required_equipment OWNER TO redline_admin;
 
 -- SCHEDULE LOCATIONS  ===================================================== --
 DROP TABLE IF EXISTS schedule_locations;
@@ -3934,21 +3910,6 @@ EXECUTE schedule_locations_insert('SIT0000002', 'SCH0000002');
 EXECUTE schedule_locations_insert('SIT0000003', 'SCH0000003');
 ALTER TABLE schedule_locations OWNER TO redline_admin;
 
--- SERVICES REQUIRED  ===================================================== --
-DROP TABLE IF EXISTS services_required;
-CREATE TABLE services_required
-(
-    service_id             VARCHAR(10) NOT NULL REFERENCES services(service_id),
-    site_id                 VARCHAR(10) NOT NULL REFERENCES sites(site_id),
-    PRIMARY KEY(service_id, site_id)
-);
-PREPARE services_required_insert (text, text) AS
-    INSERT INTO services_required (service_id, site_id)
-    VALUES ($1, $2);    
-EXECUTE services_required_insert('SER0000001', 'SIT0000001');
-EXECUTE services_required_insert('SER0000002', 'SIT0000002');
-EXECUTE services_required_insert('SER0000003', 'SIT0000003');
-ALTER TABLE services_required OWNER TO redline_admin;
 
 -- SITE ENTRY  ===================================================== --
 DROP TABLE IF EXISTS site_entry;

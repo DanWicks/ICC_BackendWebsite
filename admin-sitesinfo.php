@@ -17,6 +17,8 @@
     $client_full_name = "";
     $client = "";  
     $site_status = "";
+    $service ="";
+    $equip ="";
 
     $resultclient = pg_prepare($conn, "query_site_info", 'SELECT * FROM sites WHERE site_id = $1');
     $resultclient = pg_execute($conn, "query_site_info", array($site_id));     
@@ -38,13 +40,15 @@
     $client_email_address = trim(pg_fetch_result($resultlocation, 'client_email_address'));
     $contact_id = trim(pg_fetch_result($resultlocation, 'contact_id'));
    
-   
-    $requirements_id = get_table_info(CONT, 'requirements_id', 'site_id', $site_id, 'requirements_id');
+    
     $entry_method_id = get_table_info(SIEN, 'entry_method_id', 'site_id', $site_id, 'entry_method_id');
     $client_name = get_table_info(CLNT, 'client_name', 'client_id', $client_id, 'client_name');
     $contract_start = get_table_info(CONT, 'contract_start_date', 'site_id', $site_id, 'contract_start_date');
     $contract_end = get_table_info(CONT, 'contract_end_date', 'site_id', $site_id, 'contract_end_date');
-    $staff_requirements = get_table_info(SITR, 'sr_staff_number', 'requirements_id', $requirements_id, 'sr_staff_number');
+    $staff_requirements = get_table_info(CONT, 'required_staff', 'site_id', $site_id, 'required_staff');
+    $service = get_table_info(CONT, 'required_services', 'site_id', $site_id, 'required_services');
+    $equip = get_table_info(CONT, 'required_equipment', 'site_id', $site_id, 'required_equipment');
+    $contract_create_date = get_table_info(CONT, 'contract_create_date', 'site_id', $site_id, 'contract_create_date');
     
    
     $client_full_name = $client_last_name . ", ". $client_first_name;
@@ -75,34 +79,30 @@
 
 <div class="w3-third">
 
-    <h3>Location Information</h3>
+    <h3>Site Information</h3>
     <label class="icclabel">Address 1</label><label><?php echo $client_address1 ?></label><br/><br/>
     <label class="icclabel">Address 2</label><label><?php echo $client_address2 ?></label><br/><br/>
     <label class="icclabel">City</label><label><?php echo $city_id ?></label><br/><br/>
     <label class="icclabel">Province</label><label><?php echo get_property(PROV, $province_id); ?></label><br/><br/>
     <label class="icclabel">Country</label><label><?php echo get_property(CNTR, $country_id); ?></label><br/><br/>
     <label class="icclabel">Postal Code</label><label><?php echo $client_postal_code ?></label><br/><br/>
-     <label class="icclabel">Site Entry</label><label><?php echo get_property(ENTR, $entry_method_id); ?></label><br/><br/>
+    <label class="icclabel">Site Entry</label><label><?php echo get_property(ENTR, $entry_method_id); ?></label><br/><br/>
+    <h3>Site Contract</h3>
+    <label class="icclabel"> Contract Created</label><label><?php echo $contract_create_date ?></label><br/>    
+    <label class="icclabel"> Contract Start Date</label><label><?php echo $contract_start ?></label><br/>    
+    <label class="icclabel"> Contract End Date</label><label><?php echo $contract_end ?></label><br/><br/>
      
 </div>
 
 <div class="w3-third">
     
-    <h3>Site Specifications</h3>
-    <p><a href="./admin-clientcontracts.php?site_id=<?php echo $site_id; ?> ">Site Contracts</a></p>
-    <label class="icclabel"> Contract Start Date</label><label><?php echo $contract_start ?></label><br/>    
-    <label class="icclabel"> Contract End Date</label><label><?php echo $contract_end ?></label><br/>
-    
-    <p><a href="./admin-siterequirements.php?site_id=<?php echo $site_id; ?> ">Staff Requirements</a></p>
+    <h3><a href="./admin-sitespecifications.php?site_id=<?php echo $site_id; ?> ">Site Specifications</a></h3>
+    <p>Staff Requirements</p>
     <label class="icclabel">Required Staff</label><label><?php echo $staff_requirements ?></label>
-    
-    <p><a href="./admin-servicesreq.php?site_id=<?php echo $site_id; ?> ">Services Required</a></p>
-    <?php echo buildSiteServiceTable($site_id); ?>
-    
-    <p><a href="./admin-equipmentreq.php?site_id=<?php echo $site_id; ?> ">Equipment Required</a></p>
-    <?php echo buildSiteEquipmentTable($requirements_id); ?>
-    
-    <p><a href="./admin-assessments.php?site_id=<?php echo $site_id; ?> ">Site Assessment</a></p>
+    <h3>Services Required</h3> 
+    <?php view_check_bit_services(SRVC,"service", $service) ?>
+    <h3>Equipment Required</h3>
+    <?php view_check_bit_equip(SPEQ,"equip", $equip) ?><br/>        
  
 </div>
 

@@ -698,4 +698,78 @@
 			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" name='".$name."[]' value='".$value."'".$selected."/><br/>";	
 		}		
 	}
+    
+     // Build Check Boxes Property Value
+	//===============================================================
+	function build_check_bit_services ($table_name, $name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){			
+			$value = pg_fetch_result($result, $i, "service_id");
+			$property = pg_fetch_result($result, $i, "service_description");
+			$selected = isBitSet($i, $preselected)? " checked='checked'":"";
+			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" name='".$name."[]' value='".$value."'".$selected."/><br/>";	
+		}		
+	}
+    
+    // View Check Boxes Property Value
+	//===============================================================
+	function view_check_bit_equip ($table_name, $name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){			
+			$value = pg_fetch_result($result, $i, "specialty_equipment_id");
+			$property = pg_fetch_result($result, $i, "specialty_equipment_description");
+			$selected = isBitSet($i, $preselected)? " checked='checked'":"";
+			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" onclick=\"return false\" name='".$name."[]' value='".$value."'".$selected."/><br/>";	
+		}		
+	}
+    
+     // View Check Boxes Property Value
+	//===============================================================
+	function view_check_bit_services ($table_name, $name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){			
+			$value = pg_fetch_result($result, $i, "service_id");
+			$property = pg_fetch_result($result, $i, "service_description");
+			$selected = isBitSet($i, $preselected)? " checked='checked'":"";
+			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" onclick=\"return false\" name='".$name."[]' value='".$value."'".$selected."/><br/>";	
+		}		
+	}
+    
+    // Build Label List Property Value
+	//===============================================================
+	function build_label_list_equip ($table_name, $name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);		
+        echo "<ul>";
+		for($i = 0; $i < $records; $i++){			
+			$value = pg_fetch_result($result, $i, "specialty_equipment_id");
+			$property = pg_fetch_result($result, $i, "specialty_equipment_description");
+			
+			echo "\t\n<li>".$property."</li><br/>";	
+		}	
+        echo "</ul>";
+	}
 ?>
