@@ -12,6 +12,7 @@
     $client_id = $_SESSION['check_client_id'];
     $client_full_name = "";    
     $location_id = $_SESSION['check_location_id'];
+    $client_status = "";
     $client = "";
     $client_name = "";
     $cl_first_name = "";
@@ -34,9 +35,11 @@
         $resultclient = pg_execute($conn, "query_client_update", array($client_id));     
         $location_id = trim(pg_fetch_result($resultclient, 'location_id'));
         $client_name = trim(pg_fetch_result($resultclient, 'client_name'));
+        $client_status = trim(pg_fetch_result($resultclient, 'client_status'));  
         
         $resultlocation = pg_prepare($conn, "query_location_update", 'SELECT * FROM client_locations WHERE location_id = $1');
-        $resultlocation = pg_execute($conn, "query_location_update", array($location_id));        
+        $resultlocation = pg_execute($conn, "query_location_update", array($location_id)); 
+        
         $cl_first_name = trim(pg_fetch_result($resultlocation, 'client_first_name'));  
         $cl_last_name = trim(pg_fetch_result($resultlocation, 'client_last_name'));
         $cl_address1 = trim(pg_fetch_result($resultlocation, 'client_address1'));
@@ -54,6 +57,7 @@
     else if($_SERVER["REQUEST_METHOD"] == "POST"){
         $cl_phone_number = "";
         $client_id = $_SESSION['check_client_id']; 
+        $client_status = trim($_POST["client_status"]); 
         $location_id = $_SESSION['check_location_id']; 
         $client_name = trim($_POST["client_name"]); 
         $cl_first_name = trim($_POST["cl_first_name"]); 
@@ -69,12 +73,16 @@
         $contact_id = trim($_POST["contact_methods"]); 
         
         if ($client_name != "") {
-            $result = pg_prepare($conn, "client_update_query", 'UPDATE clients SET client_name=$2 WHERE client_id = $1');
-            $result = pg_execute($conn, "client_update_query", array($client_id, $client_name));	  
+            $result = pg_prepare($conn, "client_update_query", 'UPDATE clients SET client_name=$2, client_status=$3 WHERE client_id = $1');
+            $result = pg_execute($conn, "client_update_query", array($client_id, $client_name, $client_status));	  
+        } else {
+            $result = pg_prepare($conn, "client_status_query", 'UPDATE clients SET client_status=$2 WHERE client_id = $1');
+            $result = pg_execute($conn, "client_status_query", array($client_id, $client_status));	
         }
-        
         $result = pg_prepare($conn, "user_insert_query", 'UPDATE client_locations SET client_first_name=$2, client_last_name=$3, client_address1=$4, client_address2=$5, city_id=$6, province_id=$7, country_id=$8, client_postal_code=$9, client_phone_number=$10, client_email_address=$11, contact_id=$12 WHERE location_id = $1');
 		$result = pg_execute($conn, "user_insert_query", array($location_id, $cl_first_name, $cl_last_name, $cl_address1, $cl_address2, $cl_city, $province_id, $country_id, $cl_postal_code, $cl_phone_number, $cl_email_address, $contact_id));  
+        
+        redirect($redirect);
   
     }
 ?>    
@@ -89,7 +97,8 @@
 
 <div class="w3-third">
     
-    <h3>Contact Information (<?php echo $client_id; ?>) </h3>    
+    <h3>Contact Information (<?php echo $client_id; ?>) </h3>   
+    <label class="icclabel">Status</label><?php echo build_drop_down(CLST,$client_status) ?><br/><br/>    
     <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name; ?>" /><br/><br/>   
     <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
     <label class="icclabel">Contact Last Name</label><input name="cl_last_name" value="<?php echo $cl_last_name; ?>" /><br/><br/>

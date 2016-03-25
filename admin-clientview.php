@@ -14,6 +14,7 @@
     }
     $redirect = ("./admin-clientupdate.php?client_id=".$client_id); 	
     $location_id = get_table_info(CLNT, 'location_id', 'client_id', $client_id, 'location_id');
+    $client_status = get_table_info(CLNT, 'client_status', 'client_id', $client_id, 'client_status');
     $_SESSION['check_location_id'] = $location_id;
     $client_name = get_table_info(CLNT, 'client_name', 'client_id', $client_id, 'client_name');
     $client_first_name = get_table_info(LOCA, 'client_first_name', 'location_id', $location_id, 'client_first_name');
@@ -32,6 +33,7 @@
 
     <h3>Contact Information</h3>
     <label class="icclabel">Client ID</label><?php echo $client_id; ?><br/><br/>
+    <label class="icclabel">Client Status</label><?php echo get_property(CLST, $client_status); ?><br/><br/>
     <label class="icclabel">Client Name</label><label><?php echo $client_name; ?></label><br/><br/>
     <label class="icclabel">Location ID</label><label><?php echo $location_id ?></label><br/><br/>
     <label class="icclabel">Contact Name</label><label><?php echo $client_full_name; ?></label><br/><br/>

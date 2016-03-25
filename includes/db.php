@@ -7,6 +7,7 @@
 	//===============================================================
 	function db_connect(){	
 		$connection = pg_connect("host=127.0.0.1 dbname='" . DB_NAME . "'user='" . DB_USER . "' password='" . DB_PASSWORD . "'"); 
+        //$connection = pg_connect('postgres://uwityljpwrsqju:OBnZlBE5jqpRFLUllAOfgpb8OA@ec2-54-83-22-48.compute-1.amazonaws.com:5432/dcji1sldavs0ts'); 
 		return $connection;
 	}
     
@@ -279,7 +280,7 @@
 			$value = pg_fetch_result($result, $i, "value");
 			$property = pg_fetch_result($result, $i, "property");
 			$selected = isBitSet($i, $preselected)? " checked='checked'":"";
-			echo "\t\n<input type=\"checkbox\" name='".$name."[]' value='".$value."'".$selected."/>".$property;	
+			echo "\t\n<input type=\"checkbox\" name='".$name."[]' value='".$value."'".$selected."/>".$property."<br/>";	
 		}		
 	}
 	
@@ -660,4 +661,41 @@
         $buildTable .= "</table>";
         return $buildTable;
     }
+    
+    // Build Check Boxes Equipment
+	//===============================================================
+	function build_check_boxes_equipment ($table_name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){
+			
+			$value = pg_fetch_result($result, $i, "specialty_equipment_id");
+			$property = pg_fetch_result($result, $i, "specialty_equipment_description");
+			$selected =($preselected == $value)? "selected='selected'":"";
+			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" name='".$table_name."' value='".$value."'".$selected."/><br/>";	
+		}		
+	}	
+    
+    // Build Check Boxes Property Value
+	//===============================================================
+	function build_check_bit_equip ($table_name, $name, $preselected = ""){
+		$value = "";
+		$property = "";
+		$selected = "";		
+		$conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM ".$table_name."";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){			
+			$value = pg_fetch_result($result, $i, "specialty_equipment_id");
+			$property = pg_fetch_result($result, $i, "specialty_equipment_description");
+			$selected = isBitSet($i, $preselected)? " checked='checked'":"";
+			echo "\t\n<label class=\"icclabel\">".$property."</label><input type=\"checkbox\" name='".$name."[]' value='".$value."'".$selected."/><br/>";	
+		}		
+	}
 ?>

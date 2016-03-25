@@ -7,6 +7,9 @@
     //define("DB_NAME"	, 'TESTING-ICC1'); 
 	define("DB_USER"	, 'redline_admin'); 
 	define("DB_PASSWORD", 'redline_access'); 
+    //define("DB_NAME"	, 'dcji1sldavs0ts'); 
+    //define("DB_USER"	, 'uwityljpwrsqju'); 
+	//define("DB_PASSWORD", 'OBnZlBE5jqpRFLUllAOfgpb8OA'); 
 	
 	// Cookies Expiry
 	define("EXPIRE"		,604800); 		// for 30 days storage
@@ -42,6 +45,8 @@
     define("SIEN"       ,"site_entry");
     define("REEQ"       ,"required_equipment");
     define("SPEQ"       ,"specialty_equipment");
+    define("CLST"       ,"client_status");
+    define("STST"       ,"site_status");
     
     
     // Column Names

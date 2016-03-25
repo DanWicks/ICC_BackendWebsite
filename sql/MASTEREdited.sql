@@ -19,6 +19,36 @@ EXECUTE contact_methods_insert('M', 'Standard Mail');
 EXECUTE contact_methods_insert('T', 'Text');
 ALTER TABLE contact_methods OWNER TO redline_admin;
 
+--  Site Status ===================================================== --
+DROP TABLE IF EXISTS site_status;
+CREATE TABLE site_status
+(
+    value                   VARCHAR(1) PRIMARY KEY,
+    property                VARCHAR(30) NOT NULL
+);
+PREPARE site_status_insert (text, text) AS
+    INSERT INTO site_status (value, property)
+    VALUES ($1, $2);
+EXECUTE site_status_insert('S', 'Assessment');
+EXECUTE site_status_insert('A', 'Active');
+EXECUTE site_status_insert('I', 'Inactive');
+ALTER TABLE site_status OWNER TO redline_admin;
+
+--  Client Status ===================================================== --
+DROP TABLE IF EXISTS client_status;
+CREATE TABLE client_status
+(
+    value                   VARCHAR(1) PRIMARY KEY,
+    property                VARCHAR(30) NOT NULL
+);
+PREPARE client_status_insert (text, text) AS
+    INSERT INTO client_status (value, property)
+    VALUES ($1, $2);
+EXECUTE client_status_insert('S', 'Assessment');
+EXECUTE client_status_insert('A', 'Active');
+EXECUTE client_status_insert('I', 'Inactive');
+ALTER TABLE client_status OWNER TO redline_admin;
+
 -- COUNTRIES ===================================================== --
 DROP TABLE IF EXISTS countries;
 CREATE TABLE countries
@@ -3584,14 +3614,15 @@ CREATE TABLE clients
 (
     client_id               VARCHAR(10) PRIMARY KEY,
     client_name             VARCHAR(50),
-    location_id             VARCHAR(10) NOT NULL REFERENCES client_locations(location_id)
+    location_id             VARCHAR(10) NOT NULL REFERENCES client_locations(location_id),
+    client_status           CHAR NOT NULL REFERENCES client_status(value)
 ); 
 PREPARE clients_insert (text, text, text) AS
-    INSERT INTO clients (client_id, client_name, location_id)
-    VALUES ($1, $2, $3);
-EXECUTE clients_insert('CLT0000001', 'CIBC', 'LOC0000001');
-EXECUTE clients_insert('CLT0000002', 'Durham College', 'LOC0000002');
-EXECUTE clients_insert('CLT0000003', 'Ma & Pa Bakery', 'LOC0000003');
+    INSERT INTO clients (client_id, client_name, location_id, client_status)
+    VALUES ($1, $2, $3, $4);
+EXECUTE clients_insert('CLT0000001', 'CIBC', 'LOC0000001', 'A');
+EXECUTE clients_insert('CLT0000002', 'Durham College', 'LOC0000002', 'A');
+EXECUTE clients_insert('CLT0000003', 'Ma & Pa Bakery', 'LOC0000003', 'A');
 ALTER TABLE clients OWNER TO redline_admin;
 
 
@@ -3618,14 +3649,15 @@ CREATE TABLE sites
 (
     site_id                 VARCHAR(10) PRIMARY KEY,
     site_client_id          VARCHAR(10) NOT NULL REFERENCES clients(client_id),
-    site_location_id        VARCHAR(10) NOT NULL REFERENCES client_locations(location_id)
+    site_location_id        VARCHAR(10) NOT NULL REFERENCES client_locations(location_id),
+    site_status             CHAR NOT NULL REFERENCES site_status(value)
 );
-PREPARE sites_insert (text, text, text) AS
-    INSERT INTO sites (site_id, site_client_id, site_location_id)
-    VALUES ($1, $2, $3);    
-EXECUTE sites_insert('SIT0000001', 'CLT0000001', 'LOC0000001');
-EXECUTE sites_insert('SIT0000002', 'CLT0000002', 'LOC0000002');
-EXECUTE sites_insert('SIT0000003', 'CLT0000003', 'LOC0000003');
+PREPARE sites_insert (text, text, text, text) AS
+    INSERT INTO sites (site_id, site_client_id, site_location_id, site_status)
+    VALUES ($1, $2, $3, $4);    
+EXECUTE sites_insert('SIT0000001', 'CLT0000001', 'LOC0000001', 'A');
+EXECUTE sites_insert('SIT0000002', 'CLT0000002', 'LOC0000002', 'A');
+EXECUTE sites_insert('SIT0000003', 'CLT0000003', 'LOC0000003', 'A');
 ALTER TABLE sites OWNER TO redline_admin;
 
 -- STAFF ===================================================== --
@@ -3754,9 +3786,9 @@ CREATE TABLE specialty_equipment
 PREPARE specialty_equipment_insert (text, text) AS
     INSERT INTO specialty_equipment (specialty_equipment_id, specialty_equipment_description)
     VALUES ($1, $2);   
-EXECUTE specialty_equipment_insert('SPE0000001', 'Floor Cleaner');
-EXECUTE specialty_equipment_insert('SPE0000002', 'Floor Waxer');
-EXECUTE specialty_equipment_insert('SPE0000003', 'Steam Cleaner');
+EXECUTE specialty_equipment_insert('1', 'Floor Cleaner');
+EXECUTE specialty_equipment_insert('2', 'Floor Waxer');
+EXECUTE specialty_equipment_insert('4', 'Steam Cleaner');
 ALTER TABLE specialty_equipment OWNER TO redline_admin;
 
 -- VENDOR ===================================================== --
@@ -3797,9 +3829,9 @@ CREATE TABLE assessment_equipment
 PREPARE assessment_equipment_insert (text, text) AS
     INSERT INTO assessment_equipment (assessment_id, specialty_equipment_id)
     VALUES ($1, $2);
-EXECUTE assessment_equipment_insert('LOA0000001', 'SPE0000001');
-EXECUTE assessment_equipment_insert('LOA0000002', 'SPE0000002');
-EXECUTE assessment_equipment_insert('LOA0000003', 'SPE0000003');
+EXECUTE assessment_equipment_insert('LOA0000001', '1');
+EXECUTE assessment_equipment_insert('LOA0000002', '2');
+EXECUTE assessment_equipment_insert('LOA0000003', '4');
 ALTER TABLE assessment_equipment OWNER TO redline_admin;
 
 -- CLEANING AVAILIBILITY  ===================================================== --
@@ -3881,9 +3913,9 @@ CREATE TABLE required_equipment
 PREPARE required_equipment_insert (text, text) AS
     INSERT INTO required_equipment (requirements_id, equipment_id)
     VALUES ($1, $2);
-EXECUTE required_equipment_insert('SRE0000001', 'SPE0000001');
-EXECUTE required_equipment_insert('SRE0000002', 'SPE0000002');
-EXECUTE required_equipment_insert('SRE0000003', 'SPE0000003');
+EXECUTE required_equipment_insert('SRE0000001', '1');
+EXECUTE required_equipment_insert('SRE0000002', '2');
+EXECUTE required_equipment_insert('SRE0000003', '4');
 ALTER TABLE required_equipment OWNER TO redline_admin;
 
 -- SCHEDULE LOCATIONS  ===================================================== --

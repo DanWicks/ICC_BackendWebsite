@@ -23,6 +23,7 @@
     $contact_id = "";   
     $client_last_name = "";
     $client_first_name = "";
+    $site_status = "";
     $redirect = ("./admin-clientview.php?client_id=".$client_id);
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){  
@@ -33,6 +34,7 @@
         $resultsite = pg_execute($conn, "query_site_info", array($site_id));     
         $location_id = trim(pg_fetch_result($resultsite, 'site_location_id'));
         $client_id = trim(pg_fetch_result($resultsite, 'site_client_id'));
+        $site_status = trim(pg_fetch_result($resultsite, 'site_status'));
         $_SESSION['client_id_site'] = $client_id;
         
         $resultclient = pg_prepare($conn, "query_client_info", 'SELECT * FROM clients WHERE client_id = $1');
@@ -61,7 +63,8 @@
         $client_id = $_SESSION['client_id_site'];
         $location_id = $_SESSION['location_id_site'];
         $client = $_SESSION['client_site_name'];
-        $site_id = $_SESSION['edit_site'];    
+        $site_id = $_SESSION['edit_site'];   
+        $site_status = trim($_POST["site_status"]);         
         $client_first_name = trim($_POST["cl_first_name"]); 
         $client_last_name = trim($_POST["cl_last_name"]); 
         $cl_address1 = trim($_POST["cl_address1"]); 
@@ -75,6 +78,8 @@
         $contact_id = trim($_POST["contact_methods"]); 
         
        
+        $result = pg_prepare($conn, "site_update_query", 'UPDATE sites SET site_status=$2 WHERE site_id = $1');
+		$result = pg_execute($conn, "site_update_query", array($site_id, $site_status)); 
                
         $result = pg_prepare($conn, "user_insert_query", 'UPDATE client_locations SET client_first_name=$2, client_last_name=$3, client_address1=$4, client_address2=$5, city_id=$6, province_id=$7, country_id=$8, client_postal_code=$9, client_phone_number=$10, client_email_address=$11, contact_id=$12 WHERE location_id = $1');
 		$result = pg_execute($conn, "user_insert_query", array($location_id, $client_first_name, $client_last_name, $cl_address1, $cl_address2, $cl_city, $province_id, $country_id, $cl_postal_code, $cl_phone_number, $cl_email_address, $contact_id));  
@@ -95,6 +100,7 @@
 <div class="w3-third">    
    
     <h3>Client Information</h3>
+    <label class="icclabel">Status</label><?php echo build_drop_down(STST,$site_status  ) ?><br/><br/>    
     <label class="icclabel">Client ID</label><label name="client_id"><?php echo $client_id; ?></label><br/><br/>
     <label class="icclabel">Client Name</label><label><?php echo $client; ?></label><br/><br/>
     <label class="icclabel">Location ID</label><label><?php echo $location_id ?></label><br/><br/>   
