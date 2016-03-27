@@ -97,7 +97,7 @@
 
     <div class="notes">
     <h1>Client : <?php  echo $client;   ?></h1><hr/>
-    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">View Client Information</a></h3><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clients.php">Client Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">View Client</a></h3><br/>
     <h2>Contact Information (<?php echo $client_id; ?>) </h2><hr/> 
     <label class="icclabel">Status</label><?php echo build_drop_down(CLST,$client_status) ?><br/><br/>    
     <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name; ?>" /><br/><br/>   
@@ -112,7 +112,7 @@
 
 <div class="w3-third">
     
-    <br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>Location Information (<?php echo $location_id ?>)</h2><hr/>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
@@ -128,7 +128,8 @@
 </div>
 
 <div class="w3-third">    
-
+    
+    <br/><br/><br/>
     <div class="notes">
     <img class="smlimg" src="./Images/icc.png" alt="Immaculate Cleaning Concepts"/>      
     </div>

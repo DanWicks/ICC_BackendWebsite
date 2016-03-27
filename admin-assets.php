@@ -11,8 +11,8 @@
     <div class="notes">  
     <h1>Equipment and Supplies Options</h1> 
     <hr/> 
-    <a href="./admin-dashboard.php" class="dash"><h3>Return to Administration Dashboard</h3></a><br/>    
-    <a href="./admin-assets.php" class="dash"><h3>Equipment and Supplies Dashboard</h3></a></li>
+    <a href="./admin-dashboard.php" class="dash"><h3>Admin Home Page</h3></a><br/>    
+    <h3>Equipment and Supplies Dashboard</h3></li>
     <p>Main landing page for Administrators and Owners for the Equipment and Supplies menu.</p>
     <a href="./admin-services.php" class="dash"><h3>Maintain Services</h3></a>
     <p>Maintain the information for I.C.C Services that are available.</p>
@@ -28,7 +28,7 @@
 
 <div class="w3-third">
 
-    <br/><br/>
+    <br/>
     <div class="notes">  
     <h2>Vendor Listing</h2><hr/>
     <br/>
@@ -39,7 +39,7 @@
 
 <div class="w3-third">
 
-    <br/><br/>
+    <br/><br/><br/>
     <div class="notes">  
     <p>This pages is used for Immaculate Cleaning Conecpts (ICC) Owners and Administration to maintain the information for I.C.C. Services, Vendors, Equipment and Supplies. Their access is divided into four areas, with each of these areas containing more menu options. These four areas are Maintain Services, Maintain Vendors, Maintain Equipment, and Maintain Supplies.</p>
     </div>

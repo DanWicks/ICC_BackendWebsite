@@ -1,36 +1,36 @@
-<?php include("header.php"); ?> 
+<?php include("header.php"); ?>  
+
+<?php
+    $staff_id = ""; 		
+    $site_client_id = "";
+    $start_time = "";    
+    $conn = db_connect();
+    if($_SERVER["REQUEST_METHOD"] == "GET"){        
+        $staff_id = ""; 		
+        $site_client_id = "";
+        $start_time = "";           
+    }
+    else if($_SERVER["REQUEST_METHOD"] == "POST"){	
+        $staff_id = trim($_POST["staff_id"]); 		
+        $site_client_id = trim($_POST["clients"]); 
+        $start_time = trim($_POST["client_locations"]);  
+        /*
+        $result = pg_prepare($conn, "sites_insert_query", 'INSERT INTO sites (site_id, site_client_id, site_location_id)  
+        VALUES ($1,$2,$3)');
+		$result = pg_execute($conn, "sites_insert_query", array($site_id, $site_client_id, $site_location_id) );	    
+            
+        redirect(ADMNSITE);*/
+    }      
+?>
 
 <div class="w3-row-padding">
 
-<div class="w3-half">
-
-    <h2>Information</h2>
-    <br/>
-    <label class="icclabel">First Name</label><input></input><br/><br/>
-    <label class="icclabel">Last Name</label><input></input><br/><br/>
-    <label class="icclabel">Address</label><input></input><br/><br/>
-    <label class="icclabel">Address</label><input></input><br/><br/>
-    <label class="icclabel">City</label><input></input><br/><br/>
-    <label class="icclabel">Country</label><input></input><br/><br/>
-    <label class="icclabel">Postal Code</label><input></input><br/><br/>
-    <label class="icclabel">Phone Number</label><input></input><br/><br/>
-    <label class="icclabel">Email Address</label><input></input><br/><br/>
-    
-</div>
-
-<div class="w3-half">
-
-  <h2>  Schedule</h2>  
-  <label class="icclabel">Sunday</label><input></input><br/><br/>
-  <label class="icclabel">Monday</label><input></input><br/><br/>
-  <label class="icclabel">Tuesday</label><input></input><br/><br/>
-  <label class="icclabel">Wednesday</label><input></input><br/><br/>
-  <label class="icclabel">Thursday</label><input></input><br/><br/>
-  <label class="icclabel">Friday</label><input></input><br/><br/>
-  <label class="icclabel">Saturday</label><input></input><br/><br/>
- 
-</div>
-
+    <div class="notes">
+    <h1>Staff Schedule (UNDER CONSTRUCTION)</h1><hr/>
+    <h3><a class="dash" href="./supervisor-dashboard.php">Home Page</a></h3>
+    <?php build_schedule(); ?><br/><br/>
+     </div>
+     
 </div>
 
 <?php include("footer.php"); ?> 

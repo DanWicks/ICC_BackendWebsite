@@ -92,7 +92,7 @@
     
     <div class="notes">
     <h1>Create a New Clients</h1><hr/>  
-    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a></h3><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clients.php">Client Dashboard</a></h3><br/>
     <h2>Contact Information</h2><hr/>
     <label class="icclabel">Client ID</label><label name="client_id"><?php echo $client_id; ?></label><br/><br/>
     <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name;  ?>"></input><br/><br/>    
@@ -107,7 +107,7 @@
 
 <div class="w3-third">
 
-    <br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>Billing Location</h2><hr/>
     <label class="icclabel">Location ID</label><label name="client_id"><?php echo $location_id; ?></label><br/><br/>

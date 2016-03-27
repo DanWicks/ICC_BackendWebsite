@@ -83,14 +83,12 @@
 <div class="w3-row-padding">
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
- 
-    
 
 <div class="w3-third">
     
     <div class="notes">
     <h1>Update Staff Information</h1><hr/>  
-    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">View Information</a></h3><br/> 
+    <h3><a class="dash" href="./admin-staff.php">Admin Home Page</a> / <a class="dash" href="<?php echo $redirect; ?>">View Information</a></h3><br/> 
     <h2>I.C.C. Information</h2><hr/>
     <br/>
     <label class="icclabel">Staff ID</label><label name="staff_id"><?php echo $_SESSION['check_staff_id']; ?></label><br/><br/>  
@@ -108,7 +106,7 @@
 <div class="w3-third">
    
     <div class="notes">
-    <br/><br/><br/><br/>
+    <br/>
     <h2>Contact Information</h2><hr/>
     <br/>
     <label class="icclabel">First Name</label><input name="firstname" value="<?php echo $firstname ?>"><br/><br/>
@@ -123,7 +121,7 @@
 <div class="w3-third">
     
     <div class="notes">
-    <br/><br/><br/><br/>
+    <br/>
     <h2>Staff Address</h2><hr/>
     <br/>
     <label class="icclabel">Address</label><input name="address1" value="<?php echo $address1 ?>"></input><br/><br/>

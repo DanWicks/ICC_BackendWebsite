@@ -65,7 +65,7 @@
     
     <div class="notes">
     <h1>View Staff Information</h1><hr/> 
-    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">Update Information</a></h3><br/> 
+    <h3><a class="dash" href="./admin-staff.php">Admin Home Page</a> / <a class="dash" href="<?php echo $redirect; ?>">Update Information</a></h3><br/> 
     <h2>I.C.C. Information</h2><hr/>
     <br/>
     <label class="icclabel">Staff ID</label><label><?php echo $staff_id ?></label><br/><br/>  
@@ -81,7 +81,7 @@
 <div class="w3-third">
    
     <div class="notes">
-    <br/><br/><br/><br/>
+    <br/>
     <h2>Contact Information</h2><hr/>
     <br/>
     <label class="icclabel">First Name</label><label name="firstname"><?php echo $firstname ?><br/><br/>
@@ -96,7 +96,7 @@
 <div class="w3-third">
        
     <div class="notes">
-    <br/><br/><br/><br/>
+    <br/>
     <h2>Staff Address</h2><hr/>
     <br/>
     <label class="icclabel">Address</label><label name="address1"><?php echo $address1 ?></label><br/><br/>

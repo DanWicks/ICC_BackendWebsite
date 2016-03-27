@@ -8,8 +8,8 @@
 
     <div class="notes">   
     <h1>Staff Information Options</h1><hr/> 
-    <a href="./admin-dashboard.php" class="dash"><h3>Return to Administration Dashboard</h3></a><br/>
-    <a href="./admin-staff.php" class="dash"><h3>Staff Options</h3></a>
+    <a href="./admin-dashboard.php" class="dash"><h3>Admin Home Page</h3></a><br/>
+    <h3>Staff Options</h3>
     <p>Main landing page for Administrators and Owners for the Staff Information menu.</p>
     <a href="./admin-staffcreate.php" class="dash"><h3>Enter New Staff</h3></a>
     <p>Enter New staff information into the I.C.C. database.</p>
@@ -23,7 +23,7 @@
 
 <div class="w3-third">
     
-    <br/><br/>
+    <br/>
     <div class="notes">   
     <h2>Staff Listing</h2><hr/>
     <br/>
@@ -34,7 +34,7 @@
 
 <div class="w3-third"> 
     
-    <br/></br>
+    <br/></br><br/>
     <div class="notes">      
     <p>This pages is used for Immaculate Cleaning Conecpts (ICC) Owners and Administration to maintain the information used by the site when creating, viewing and updating Staff, Schedules and Staff availability. Their access is divided into five areas, with each of these areas containing more menu options. These five areas are Maintain Staff, Enter New  Staff, Maintain Schedule, Staff Availability and Update Information.</p>
     </div>

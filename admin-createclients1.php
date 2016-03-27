@@ -174,7 +174,7 @@
     
     <div class="notes">
     <h2>Enter Client Assessment : <?php echo $site_id ?></h2><hr/> 
-    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a></h2><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clients.php">Client Dashboard</a></h3><br/>
     <h2>Cleaning Location Contact : <?php echo $location_id ?></h2><hr/>
     <label class="icclabel">Same as Billing:</label><input type="checkbox" name="isLocation" value="check" <?php if ($isLocation == 'check') {echo'checked="checked"';} ?> /></br></br>
     <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
@@ -188,7 +188,7 @@
 
 <div class="w3-third">
 
-    <br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>Location Information</h2><hr/>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
@@ -203,7 +203,7 @@
 
 <div class="w3-third">
     
-    <br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>Assesment Information : <?php echo $assessment_id; ?></h2><hr/>
     <label class="icclabel">Staff Required</label><input name="staff_required" value="<?php echo $staff_required ?>" /><br/><br/>    

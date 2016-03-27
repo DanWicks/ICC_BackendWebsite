@@ -1,11 +1,13 @@
-<?php include("header.php"); ?> 
+<?php include("header.php"); ?>  
 
 <div class="w3-row-padding">
 
 <div class="w3-half">
-
-    <h2>Information</h2>
-    <br/>
+    
+    <div class="notes">
+    <h1>Maintain Staff Availability (UNDER CONSTRUCTION)</h1><hr/>
+    <h3><a class="dash" href="./staff-dashboard.php">Home Page</a></h3><br/>    
+    <h2>Staff Information</h2><hr/>
     <label class="icclabel">First Name</label><input></input><br/><br/>
     <label class="icclabel">Last Name</label><input></input><br/><br/>
     <label class="icclabel">Address</label><input></input><br/><br/>
@@ -15,21 +17,24 @@
     <label class="icclabel">Postal Code</label><input></input><br/><br/>
     <label class="icclabel">Phone Number</label><input></input><br/><br/>
     <label class="icclabel">Email Address</label><input></input><br/><br/>
-    
+    </div>
+   
 </div>
 
 <div class="w3-half">
-
-  <h2>  Schedule</h2>  
-  <label class="icclabel">Sunday</label><input></input><br/><br/>
-  <label class="icclabel">Monday</label><input></input><br/><br/>
-  <label class="icclabel">Tuesday</label><input></input><br/><br/>
-  <label class="icclabel">Wednesday</label><input></input><br/><br/>
-  <label class="icclabel">Thursday</label><input></input><br/><br/>
-  <label class="icclabel">Friday</label><input></input><br/><br/>
-  <label class="icclabel">Saturday</label><input></input><br/><br/>
-  <input type="Text" id="demo1" maxlength="25" size="25">
-   
+    
+    <br/><br/><br/><br/>
+    <div class="notes">
+    <h2>Availability Details    </h2><hr/>
+    <label class="icclabel">Sunday</label><input></input><br/><br/>
+    <label class="icclabel">Monday</label><input></input><br/><br/>
+    <label class="icclabel">Tuesday</label><input></input><br/><br/>
+    <label class="icclabel">Wednesday</label><input></input><br/><br/>
+    <label class="icclabel">Thursday</label><input></input><br/><br/>
+    <label class="icclabel">Friday</label><input></input><br/><br/>
+    <label class="icclabel">Saturday</label><input></input><br/><br/>
+    </div>
+ 
 </div>
 
 </div>

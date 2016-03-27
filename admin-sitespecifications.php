@@ -170,7 +170,7 @@ $conn = db_connect();
 
     <div class="notes">
     <h1>Site Specifications</h1><hr/>  
-    <h3><a class="dash" href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">Return to Site Information </a></h3><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">View Client</a> / <a class="dash" href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">View Site</a></h3><br/>
     <h2>Assessment Details</h2><hr/>
     <label class="icclabel">Client ID</label><label><?php echo $client_id ?></label><br/><br/>
     <label class="icclabel">Location ID</label><label><?php echo $location_id ?></label><br/><br/>

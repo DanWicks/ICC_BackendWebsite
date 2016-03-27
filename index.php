@@ -47,7 +47,7 @@
                 $_SESSION['staff_status_id'] = trim(pg_fetch_result($result, "staff_status_id"));	
                 $_SESSION['staff_address1'] = trim(pg_fetch_result($result, "staff_address1"));	 
                 $_SESSION['staff_address2'] = trim(pg_fetch_result($result, "staff_address2"));	
-                $_SESSION['staff_city'] = trim(pg_fetch_result($result, "staff_city"));	
+                $_SESSION['city_id'] = trim(pg_fetch_result($result, "city_id"));	
                 $_SESSION['province_id'] = trim(pg_fetch_result($result, "province_id"));	
                 $_SESSION['country_id'] = trim(pg_fetch_result($result, "country_id"));	
                 $_SESSION['staff_postal'] = trim(pg_fetch_result($result, "staff_postal"));	

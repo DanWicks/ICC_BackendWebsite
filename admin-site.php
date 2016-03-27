@@ -58,7 +58,7 @@
     
     <div class="notes">    
     <h1>Website Administration Options</h1><hr/>
-    <a href="./admin-dashboard.php" class="dash"><h3>Return to Administration Dashboard</h3></a><br/>
+    <a href="./admin-dashboard.php" class="dash"><h3>Admin Home Page</h3></a><br/>
     <h2>Staff Status</h2><hr/>
     <?php echo buildstaff_statusTable(); ?>
     <p>Update Status Description</p>

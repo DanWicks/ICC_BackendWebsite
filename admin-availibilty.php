@@ -6,7 +6,7 @@
     
     <div class="notes">
     <h1>Maintain Staff Availability (UNDER CONSTRUCTION)</h1><hr/>
-    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a></h3><br/>    
+    <h3><a href="./admin-dashboard.php" class="dash">Admin Home Page</a> / <a class="dash" href="./admin-staff.php">Staff Dashboard</a></h3>   
     <h2>Staff Information</h2><hr/>
     <label class="icclabel">First Name</label><input></input><br/><br/>
     <label class="icclabel">Last Name</label><input></input><br/><br/>

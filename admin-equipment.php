@@ -64,7 +64,7 @@
    
     <div class="notes">
     <h1>Maintain Equipment</h1><hr/>
-    <h3><a class="dash" href="./admin-assets.php">Return to Equip and Supplies</a></h3><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-assets.php">E & S Dashboard</a></h3><br/>    
     <h2>Equipment Listing</h2><hr/>
     <?php echo build_equipment_Table() ?>
     </div>
@@ -74,7 +74,7 @@
 
 <div class="w3-third">
 
-    <br/><br/>
+    <br/>
     <div class="notes">
     <h2>Enter/Update Equipment</h2><hr/>
     <label class="icclabel">ID</label><label><?php echo $specialty_equipment_id  ?></label><br/><br/>
@@ -87,7 +87,7 @@
 
 <div class="w3-third">
 
-    <br/><br/>
+    <br/><br/><br/>
     <div class="notes">
     <img class="smlimg" src="./Images/icc.png" alt="Immaculate Cleaning Concepts" /> 
     </div>

@@ -80,6 +80,7 @@
     define("ADMNLOCA"   ,"admin-locationinfo.php");
     define("ADMNSITE"   ,"admin-sites.php");
     define("ADMNSTIN"   ,"admin-staffinfo.php");
+
     
     // Page Constants
     define("START"      ,"_start");

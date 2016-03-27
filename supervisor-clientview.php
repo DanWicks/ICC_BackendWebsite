@@ -29,7 +29,7 @@
     
     <div class="notes">
     <h1>Contact Information</h1><hr/>   
-    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clients.php">Client Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">Edit Client</a></h3><br/>
+    <h3><a class="dash" href="./supervisor-clients.php">Client Listings</a></h3><br/>
     <h2>Client : <?php  echo $client;   ?></h2><hr/>
     <label class="icclabel">Client ID</label><?php echo $client_id; ?><br/><br/>
     <label class="icclabel">Client Status</label><?php echo get_property(CLST, $client_status); ?><br/><br/>
@@ -65,7 +65,7 @@
     <br/>
     <div class="notes">
     <h2>Cleaning Sites Information</h2><hr/>
-    <?php echo builClientSitesTable($client_id); ?>    
+    <?php echo builSuperSitesTable($client_id); ?>    
     </div>
     
     <div class="notes">

@@ -90,7 +90,7 @@
    
     <div class="notes">
     <h1>Enter New Staff Information</h1><hr/>
-    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a></h3><br/>
+    <h3><a href="./admin-dashboard.php" class="dash">Admin Home Page</a> / <a class="dash" href="./admin-staff.php">Staff Dashboard</a></h3>
     <h2>Contact Information</h2><hr/>
     <br/>
     <label class="icclabel">First Name</label><input name="firstname"></input><br/><br/>
@@ -104,7 +104,7 @@
 
 <div class="w3-third">
     
-    <br/><br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>Staff Address</h2><hr/>
     <label class="icclabel">Address</label><input name="address1"></input><br/><br/>
@@ -119,7 +119,7 @@
 
 <div class="w3-third">
        
-    <br/><br/><br/><br/>
+    <br/>
     <div class="notes">
     <h2>I.C.C. Information</h2><hr/>
     <label class="icclabel">Staff ID</label><label name="staff_id" value="<?php echo $staff_id ?>"><?php echo $staff_id ?></label><br/><br/>  

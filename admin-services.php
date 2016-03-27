@@ -65,7 +65,7 @@
 
     <div class="notes">
     <h1>Maintain Services</h1><hr/>
-    <h3><a class="dash" href="./admin-assets.php">Return to Equip and Supplies</a></h3><br/>    
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-assets.php">E & S Dashboard</a></h3><br/>    
     <h2>Services Listing</h2><hr/>
     <?php echo build_service_Table() ?>
     </div>
@@ -75,7 +75,7 @@
 
 <div class="w3-third">
     
-    <br/><br/>
+    <br/>
     <div class="notes">
     <h2>Enter/Update Services</h2><hr/> 
     <label class="icclabel">ID</label><label><?php echo $service_id  ?></label><br/><br/>
@@ -88,7 +88,8 @@
 </div>
 
 <div class="w3-third">
-
+    
+    <br/><br/><br/>
     <div class="notes">   
     <img class="smlimg" src="./Images/icc.png" alt="Immaculate Cleaning Concepts"/> 
     </div>

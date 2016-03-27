@@ -27,7 +27,7 @@
 
     <div class="notes">
     <h1>Staff Schedule (UNDER CONSTRUCTION)</h1><hr/>
-    <h3><a href="./admin-dashboard.php" class="dash">Admin Home Page</a> / <a class="dash" href="./admin-staff.php">Staff Dashboard</a></h3>
+    <h3><a href="./staff-dashboard.php" class="dash">Home Page</a></h3>
     <?php build_schedule(); ?><br/><br/>
      </div>
      

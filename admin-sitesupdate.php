@@ -93,34 +93,39 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
 
-    <h3><b>Site : <?php echo $client . "(".$site_id.")"; ?></b></h3>
-
-    <p><a href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">Client Information </a> /  <a href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">Return to Site Information </a></p>
-
 <div class="w3-third">    
    
-    <h3>Client Information</h3>
+    <div class="notes">
+    <h1>Site : <?php echo $client . "(".$site_id.")"; ?></h1><hr/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">View Client </a> /  <a class="dash" href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">View Site</a></h3><br/>
+    <h2>Client Information</h2><hr/>
     <label class="icclabel">Status</label><?php echo build_drop_down(STST,$site_status  ) ?><br/><br/>    
     <label class="icclabel">Client ID</label><label name="client_id"><?php echo $client_id; ?></label><br/><br/>
     <label class="icclabel">Client Name</label><label><?php echo $client; ?></label><br/><br/>
     <label class="icclabel">Location ID</label><label><?php echo $location_id ?></label><br/><br/>   
+    </div>
     
 </div>
 
 <div class="w3-third">
     
-    <h3>Contact Information</h3>    
-   <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $client_first_name; ?>" /><br/><br/>
+    <br/>
+    <div class="notes">
+    <h2>Contact Information</h2><hr/>  
+    <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $client_first_name; ?>" /><br/><br/>
     <label class="icclabel">Contact Last Name</label><input name="cl_last_name" value="<?php echo $client_last_name; ?>" /><br/><br/>
     <label class="icclabel">Phone Number</label><input name="cl_phone_number" value="<?php echo $cl_phone_number ?>" /><br/><br/>
     <label class="icclabel">Email</label><input name="cl_email_address" value="<?php echo $cl_email_address ?>" /><br/><br/>
     <label class="icclabel">Contact Method</label><?php echo build_drop_down(CNTC,$contact_id) ?><br/><br/>
+    </div>
     
 </div>
 
 <div class="w3-third">
 
-    <h3>Location Information</h3>
+    <br/>
+    <div class="notes"> 
+    <h2>Location Information</h2><hr/>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
     <label class="icclabel">Address 2</label><input name="cl_address2" value="<?php echo $cl_address2 ?>" /><br/><br/>
     <label class="icclabel">City</label><input name="cl_city" value="<?php echo $cl_city ?>" /><br/><br/>
@@ -129,6 +134,8 @@
     <label class="icclabel">Postal Code</label><input name="cl_postal_code" value="<?php echo $cl_postal_code  ?>" /><br/><br/>   
     <input type="submit" value="Submit" /> 
     <input type="reset" value="Reset"  />   
+    </div>
+    <br/>
      
 </div>
 

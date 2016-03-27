@@ -63,7 +63,7 @@
     
     <div class="notes">
     <h1>Site : <?php echo $client . "(".$site_id.")"; ?></h1><hr/>    
-    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-clientview.php?client_id=<?php echo $client_id; ?> ">View Client</a> / <a class="dash"  href="./admin-sitesupdate.php?site_id=<?php echo $site_id; ?> ">Edit Site</a></h3><br/>
+    <h3><a class="dash" href="./supervisor-clients.php">Client Listing</a> / <a class="dash" href="./supervisor-clientview.php?client_id=<?php echo $client_id; ?> ">Client Info. </a></h3><br/>
     <h2>Contact Information</h2><hr/>
     <label class="icclabel">Client ID</label><?php echo $client_id; ?><br/><br/>
     <label class="icclabel">Site Status</label><label><?php echo get_property(STST, $site_status); ?></label><br/><br/> 
@@ -101,7 +101,7 @@
     
     <br/>
     <div class="notes">
-    <h2><a class="dash" href="./admin-sitespecifications.php?site_id=<?php echo $site_id; ?> ">Site Specifications</a></h2><hr/>
+    <h2>Site Specifications</h2><hr/>
     <p>Staff Requirements</p>
     <label class="icclabel">Required Staff</label><label><?php echo $staff_requirements ?></label>
     <h3>Services Required</h3> 

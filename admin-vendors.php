@@ -139,7 +139,7 @@
    
     <div class="notes">
     <h1>Maintain Vendor Information</h1><hr/>  
-    <h3><a class="dash" href="./admin-assets.php">Return to Equip and Supplies</a></h3><br/>
+    <h3><a class="dash" href="./admin-dashboard.php">Admin Home Page</a> / <a class="dash" href="./admin-assets.php">E & S Dashboard</a></h3><br/>    
     <h2>Vendor Listing</h2><hr/>
     <?php  echo build_vendor_Table(); ?>
     </div>
@@ -148,7 +148,7 @@
 
 <div class="w3-third">
 
-    <br/><br/>
+    <br/>
     <div class="notes">
     <h2>Contact Information</h2><hr/>
     <br/><label class="icclabel">Vendor ID</label><label name="vendor_id" value="<?php echo $vendor_id ?>"><?php echo $vendor_id ?></label><br/><br/>  
@@ -164,7 +164,7 @@
 
 <div class="w3-third">
      
-    <br/><br/>
+    <br/>
     <div class="notes">
     <h2>Staff Address</h2><hr/>
     <label class="icclabel">Address</label><input name="vendor_address1" value="<?php echo $vendor_address1 ?>"></input><br/><br/>

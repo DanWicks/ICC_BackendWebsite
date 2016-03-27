@@ -591,6 +591,36 @@
         return $clientTable;
     }
     
+    // Build Client Table Short List
+	//===============================================================
+    function buildclientSuperTable(){
+        $conn 		= db_connect();       
+        $clientTable = "";
+        $clientTable = "<table><tr><td width=\"30%\"><b>Client ID</b></td><td><b>Client Name</b></td><td><b>Contact Name</b></td></tr>";
+		$sqldrop 	= "SELECT * FROM clients ORDER by client_name ASC";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){
+            $client_id = pg_fetch_result($result, $i, "client_id");
+			$client_name = pg_fetch_result($result, $i, "client_name");
+            $location_id = pg_fetch_result($result, $i, "location_id");
+                    
+            $resultname = pg_prepare($conn, "newlocation_id".$i, 'SELECT * FROM client_locations WHERE location_id = $1');
+            $resultname = pg_execute($conn, "newlocation_id".$i, array($location_id));
+            if ((pg_num_rows($result) == 0)){
+                    $firstname = "no";
+                    $lastname = "name";
+            } else {
+               $firstname=trim(pg_fetch_result($resultname, 'client_first_name'));	
+               $lastname=trim(pg_fetch_result($resultname, 'client_last_name'));	
+            }          
+            $name = isset($client_name)?($client_name):($lastname. ", ".$firstname);    
+            $clientTable .= "<tr><td><a class=\"dash\" href=\"./supervisor-clientview.php?client_id=".$client_id." \">".$client_id." </a></td><td>".$name."</td><td>".$lastname. ", ".$firstname."</td></tr>";
+        }
+        $clientTable .= "</table>";
+        return $clientTable;
+    }
+    
     // Build Client Sites Table 
 	//===============================================================
     function builClientSitesTable($client_id){
@@ -612,6 +642,33 @@
                       
             $name = ($lastname. ", ".$firstname);    
             $buildTable .= "<tr><td><a class=\"dash\" href=\"./admin-sitesinfo.php?site_id=".$site_id." \">".$site_id." </a></td><td>".$name."</td><td>".display_phone_number($phone)."</td></tr>";
+        }
+        
+        $buildTable .= "</table>";
+        return $buildTable;
+    }
+    
+    // Build Supervisor Sites Table 
+	//===============================================================
+    function builSuperSitesTable($client_id){
+        $conn 		= db_connect();
+        $buildTable = "";
+        $buildTable = "<table><tr><td><b>Site ID</b></td><td><b>Contact Name</b></td><td><b>Phone Number</b></td></tr>";
+		$result = pg_prepare($conn, "query_sites", 'SELECT * FROM sites WHERE site_client_id = $1');
+        $result = pg_execute($conn, "query_sites", array($client_id));
+		$records = pg_num_rows($result);	
+		
+		for($i = 0; $i < $records; $i++){
+            $site_id=trim(pg_fetch_result($result, $i,'site_id'));	
+            $location_id=trim(pg_fetch_result($result, $i,'site_location_id'));	            
+                $resultname = pg_prepare($conn, "newlocation_id".$i, 'SELECT * FROM client_locations WHERE location_id = $1');
+                $resultname = pg_execute($conn, "newlocation_id".$i, array($location_id));
+                $firstname=trim(pg_fetch_result($resultname, 'client_first_name'));	
+                $lastname=trim(pg_fetch_result($resultname, 'client_last_name'));	
+                $phone=trim(pg_fetch_result($resultname, 'client_phone_number'));	           
+                      
+            $name = ($lastname. ", ".$firstname);    
+            $buildTable .= "<tr><td><a class=\"dash\" href=\"./supervisor-sitesinfo.php?site_id=".$site_id." \">".$site_id." </a></td><td>".$name."</td><td>".display_phone_number($phone)."</td></tr>";
         }
         
         $buildTable .= "</table>";
@@ -861,7 +918,7 @@
             $service_id = pg_fetch_result($result, $i, "service_id");
 			$service_description = pg_fetch_result($result, $i, "service_description");    
             $service_price = pg_fetch_result($result, $i, "service_price");                 
-            $table .= "<tr><td><a href=\"./admin-services.php?service_id=".$service_id." \">Edit Service</a></td><td>".$service_description."</td><td>".$service_price."</td></tr>";
+            $table .= "<tr><td><a class=\"dash\" href=\"./admin-services.php?service_id=".$service_id." \">Edit Service</a></td><td>".$service_description."</td><td>".$service_price."</td></tr>";
             if ((int)$service_id > (int)$last_index)
                 $last_index = $service_id;
         }
@@ -884,6 +941,28 @@
             $specialty_equipment_id = pg_fetch_result($result, $i, "specialty_equipment_id");
 			$specialty_equipment_description = pg_fetch_result($result, $i, "specialty_equipment_description");  
             $table .= "<tr><td><a class=\"dash\" href=\"./admin-equipment.php?specialty_equipment_id=".$specialty_equipment_id." \">Edit Equipement</a></td><td>".$specialty_equipment_description."</td></tr>";
+            if ((int)$specialty_equipment_id > (int)$last_index)
+                $last_index = $specialty_equipment_id;
+        }
+        $table .= "</table>\n<input type=\"hidden\" name=\"last_index\" value=\"".$last_index."\" />";
+        return $table;
+    }
+    
+    // Build Equipment Super Table
+	//===============================================================
+    function build_equipment_super_Table(){
+        $conn 		= db_connect();
+        $last_index = 0;
+        $table = "";
+        $table = "<table><tr><td><b></b></td><td><b>Description</b></tr>";
+        $conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM specialty_equipment ORDER BY specialty_equipment_id ASC";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){
+            $specialty_equipment_id = pg_fetch_result($result, $i, "specialty_equipment_id");
+			$specialty_equipment_description = pg_fetch_result($result, $i, "specialty_equipment_description");  
+            $table .= "<tr><td><a class=\"dash\" href=\"./supervisor-equipment.php?specialty_equipment_id=".$specialty_equipment_id." \">Edit Equipement</a></td><td>".$specialty_equipment_description."</td></tr>";
             if ((int)$specialty_equipment_id > (int)$last_index)
                 $last_index = $specialty_equipment_id;
         }
@@ -927,7 +1006,28 @@
             $supply_id = pg_fetch_result($result, $i, "supply_id");
 			$supply_description = pg_fetch_result($result, $i, "supply_description");    
             $supply_qoh = pg_fetch_result($result, $i, "supply_qoh");                 
-            $table .= "<tr><td><a href=\"./admin-supplies.php?supply_id=".$supply_id." \">Edit Supplies</a></td><td>".$supply_description."</td><td>".$supply_qoh."</td></tr>";
+            $table .= "<tr><td><a class=\"dash\" href=\"./admin-supplies.php?supply_id=".$supply_id." \">Edit Supplies</a></td><td>".$supply_description."</td><td>".$supply_qoh."</td></tr>";
+        }
+        $table .= "</table>";
+        return $table;
+    }
+    
+    // Build Supply SupervisorTable
+	//===============================================================
+    function build_supply_super_table(){
+        $conn 		= db_connect();
+        $last_index = 0;
+        $table = "";
+        $table = "<table><tr><td><b></b></td><td><b>Description</b><td><b>Price</b></td></tr>";
+        $conn 		= db_connect();
+		$sqldrop 	= "SELECT * FROM cleaning_supplies ORDER BY supply_id ASC";
+		$result 	= pg_query($conn, $sqldrop);
+		$records 	= pg_num_rows($result);			
+		for($i = 0; $i < $records; $i++){
+            $supply_id = pg_fetch_result($result, $i, "supply_id");
+			$supply_description = pg_fetch_result($result, $i, "supply_description");    
+            $supply_qoh = pg_fetch_result($result, $i, "supply_qoh");                 
+            $table .= "<tr><td><a class=\"dash\" href=\"./supervisor-supplies.php?supply_id=".$supply_id." \">Edit Supplies</a></td><td>".$supply_description."</td><td>".$supply_qoh."</td></tr>";
         }
         $table .= "</table>";
         return $table;
