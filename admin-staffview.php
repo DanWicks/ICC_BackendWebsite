@@ -59,39 +59,45 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
  
-    <h2><b>View Staff Information</b></h2>  
+   
 
 <div class="w3-third">
     
-    <p><a href="./admin-staff.php">Return to Staff Dashboard</a> / <a href="<?php echo $redirect; ?>">Update Information</a><br/></p> 
-    <h3>I.C.C. Information</h3>
+    <div class="notes">
+    <h1>View Staff Information</h1><hr/> 
+    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">Update Information</a></h3><br/> 
+    <h2>I.C.C. Information</h2><hr/>
     <br/>
     <label class="icclabel">Staff ID</label><label><?php echo $staff_id ?></label><br/><br/>  
     <label class="icclabel">Staff Status</label><?php echo get_property(STAT, $staffstatus); ?><br/><br/>  
     <label class="icclabel">Staff Type</label><?php echo get_property(TYPE, $stafftype); ?><br/><br/>
     <label class="icclabel">Salary/Wage</label><label name="staff_wage"><?php echo $staff_wage ?></label><br/><br/>  
-    <label class="icclabel">Password</label><label type="password" name="password"><?php echo $password ?></label><br/><br/>       
+    <label class="icclabel">Password</label><label type="password" name="password"><?php echo $password ?></label><br/><br/>  
+    </div>
     <br/>
     
 </div>
     
 <div class="w3-third">
    
-    <br/><br/>
-    <h3>Contact Information</h3>
+    <div class="notes">
+    <br/><br/><br/><br/>
+    <h2>Contact Information</h2><hr/>
     <br/>
     <label class="icclabel">First Name</label><label name="firstname"><?php echo $firstname ?><br/><br/>
     <label class="icclabel">Last Name</label><label name="lastname" ><?php echo $lastname ?></label><br/><br/>
     <label class="icclabel">Phone Number</label><label name="phonenumber" ><?php echo $phonenumber ?></label><br/><br/>
     <label class="icclabel">Email Address</label><label name="emailaddress"><?php echo $emailaddress ?></label><br/><br/>
     <label class="icclabel">Contact Method</label><?php echo get_property(CNTC, $contact_methods); ?><br/><br/>    
+    </div>
     
 </div>
 
 <div class="w3-third">
-        
-    <br/><br/>
-    <h3>Staff Address</h3>
+       
+    <div class="notes">
+    <br/><br/><br/><br/>
+    <h2>Staff Address</h2><hr/>
     <br/>
     <label class="icclabel">Address</label><label name="address1"><?php echo $address1 ?></label><br/><br/>
     <label class="icclabel">Address</label><label name="address2"><?php echo $address2 ?></label><br/><br/>
@@ -99,10 +105,9 @@
     <label class="icclabel">Province</label><?php echo get_property(PROV, $province); ?><br/><br/>
     <label class="icclabel">Country</label><?php echo get_property(CNTR, $countries); ?><br/><br/>
     <label class="icclabel">Postal Code</label><label name="postalcode" ><?php echo $postalcode ?></label><br/><br/>
-        
+    </div>
+    
 </div>
-
-
 
 </div>
 

@@ -54,45 +54,66 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-<div class="w3-third">       
+<div class="w3-third"> 
     
-    <h2><b>Website Administration Options</b></h2>  
-    <br/>
-    <img class="smlimg" src="Images/icc.png" alt="Immaculate Cleaning Concepts" width="100%" />  
-    <p>This pages is used for Immaculate Cleaning Conecpts (ICC) Owners and Administration to maintain the information used by the site when creating, viewing and updating Client, Staff, Location and Vendors. Their access is divided into four areas, with each of these areas containing more menu options. These fours areas are Contact Methods,  Entry Methods, Staff Status, and Staff Types.</p> 
-        
-</div>
-
-<div class="w3-third">
-
-    <h3>Staff Status</h3>
+    <div class="notes">    
+    <h1>Website Administration Options</h1><hr/>
+    <a href="./admin-dashboard.php" class="dash"><h3>Return to Administration Dashboard</h3></a><br/>
+    <h2>Staff Status</h2><hr/>
     <?php echo buildstaff_statusTable(); ?>
     <p>Update Status Description</p>
     <?php build_drop_down(STAT,$staff_status_value) ?>
     <input name="staff_status_property"/>
-    <h3>Staff Type</h3>
+    <br/><br/><br/>
+    </div>
+    <hr/>
+    
+    <div class="notes">
+    <h2>Staff Type</h2><hr/>
     <?php echo buildstaff_typeTable(); ?>
     <p>Update Staff Types</p>
     <?php build_drop_down(TYPE,$staff_type_value) ?>
     <input name="staff_type_property"/>
-    <br/>
-    
+    <br/><br/><br/>
+    </div>  
+        
 </div>
 
 <div class="w3-third">
-
-    <h3>Contact Methods</h3>
+    
+    <br/><br/><br/>
+    <div class="notes">
+    <h2>Contact Methods</h2><hr/>
     <?php echo buildContactsTable(); ?>
     <p>Update Contact Method Descriptions</p>
     <?php build_drop_down(CNTC,$contact_methods_value) ?>
-    <input name="contact_methods_property"/>    
-    <h3>Entry Methods</h3>
+    <input name="contact_methods_property"/>
+    <br/><br/><br/>
+    </div>   
+    
+    <div class="notes">    
+    <h2>Entry Methods</h2><hr/>
     <?php echo buildentry_methodTable(); ?>
     <p>Update Entry Method Descriptions</p>
     <?php build_drop_down(ENTR,$entry_methods_value) ?>
     <input name="entry_methods_property"/><br/><br/  >
     <input type="submit" value="Submit" /> 
-    <input type="reset" value="Reset"  />  
+    <input type="reset" value="Reset"  /> 
+    <br/><br/><br/>
+    </div>   
+        
+</div>
+
+<div class="w3-third">
+    
+    <br/></br><br/>
+    <div class="notes">
+    <p>This pages is used for Immaculate Cleaning Conecpts (ICC) Owners and Administration to maintain the information used by the site when creating, viewing and updating Client, Staff, Location and Vendors. Their access is divided into four areas, with each of these areas containing more menu options. These fours areas are Contact Methods,  Entry Methods, Staff Status, and Staff Types.</p>
+    </div>
+    
+    <div class="notes">
+    <img class="smlimg" src="Images/icc.png" alt="Immaculate Cleaning Concepts" />   
+    </div>
     
 </div>
 

@@ -91,13 +91,14 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
 
-    <h3><b>Client : <?php  echo $client;   ?></b></h3>
-
-    <p><a href="./admin-clients.php">Return to Client Dashboard</a> / <a href="<?php echo $redirect; ?>">View Client Information</a></p>
+    
 
 <div class="w3-third">
-    
-    <h3>Contact Information (<?php echo $client_id; ?>) </h3>   
+
+    <div class="notes">
+    <h1>Client : <?php  echo $client;   ?></h1><hr/>
+    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a> / <a class="dash" href="<?php echo $redirect; ?>">View Client Information</a></h3><br/>
+    <h2>Contact Information (<?php echo $client_id; ?>) </h2><hr/> 
     <label class="icclabel">Status</label><?php echo build_drop_down(CLST,$client_status) ?><br/><br/>    
     <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name; ?>" /><br/><br/>   
     <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
@@ -105,13 +106,15 @@
     <label class="icclabel">Phone Number</label><input name="cl_phone_number" value="<?php echo $cl_phone_number ?>" /><br/><br/>
     <label class="icclabel">Email</label><input name="cl_email_address" value="<?php echo $cl_email_address ?>" /><br/><br/>
     <label class="icclabel">Contact Method</label><?php echo build_drop_down(CNTC,$contact_id) ?><br/><br/>
-    
+    </div>
     
 </div>
 
 <div class="w3-third">
-  
-    <h3>Location Information (<?php echo $location_id ?>)</h3>
+    
+    <br/><br/><br/>
+    <div class="notes">
+    <h2>Location Information (<?php echo $location_id ?>)</h2><hr/>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
     <label class="icclabel">Address 2</label><input name="cl_address2" value="<?php echo $cl_address2 ?>" /><br/><br/>
     <label class="icclabel">City</label><input name="cl_city" value="<?php echo $cl_city ?>" /><br/><br/>
@@ -120,10 +123,15 @@
     <label class="icclabel">Postal Code</label><input name="cl_postal_code" value="<?php echo $cl_postal_code  ?>" /><br/><br/>
     <input type="submit" value="Submit" /> 
     <input type="reset" value="Reset"  />   
+    </div>
  
 </div>
 
 <div class="w3-third">    
+
+    <div class="notes">
+    <img class="smlimg" src="./Images/icc.png" alt="Immaculate Cleaning Concepts"/>      
+    </div>
    
 </div>
 

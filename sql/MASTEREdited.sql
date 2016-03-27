@@ -3557,9 +3557,7 @@ PREPARE staff_status_insert (text, text) AS
 EXECUTE staff_status_insert('F', 'Full-Time');
 EXECUTE staff_status_insert('P', 'Part-Time');
 EXECUTE staff_status_insert('T', 'Temporary');
-EXECUTE staff_status_insert('S', 'Seasonal');
 EXECUTE staff_status_insert('I', 'Inactive');
-EXECUTE staff_status_insert('X', 'Terminated');
 ALTER TABLE staff_status OWNER TO redline_admin;
 
 -- STAFF TYPE ===================================================== --
@@ -3573,8 +3571,6 @@ PREPARE staff_type_insert (text, text) AS
     INSERT INTO staff_type (value, property)
     VALUES ($1, $2);   
 EXECUTE staff_type_insert('A', 'Administrator');
-EXECUTE staff_type_insert('O', 'Owner');
-EXECUTE staff_type_insert('M', 'Manager');
 EXECUTE staff_type_insert('S', 'Supervisor');
 EXECUTE staff_type_insert('T', 'Team-member');
 ALTER TABLE staff_type OWNER TO redline_admin;

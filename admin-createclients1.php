@@ -168,44 +168,51 @@
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-    <h2>Enter Client Assessment : <?php echo $site_id ?></h2>
     
-    <p><a href="./admin-clients.php">Return to Client Dashboard</a></p>
  
 <div class="w3-third">
     
-    <h2>Cleaning Location Contact : <?php echo $location_id ?></h2>
+    <div class="notes">
+    <h2>Enter Client Assessment : <?php echo $site_id ?></h2><hr/> 
+    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a></h2><br/>
+    <h2>Cleaning Location Contact : <?php echo $location_id ?></h2><hr/>
     <label class="icclabel">Same as Billing:</label><input type="checkbox" name="isLocation" value="check" <?php if ($isLocation == 'check') {echo'checked="checked"';} ?> /></br></br>
     <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
     <label class="icclabel">Contact Last Name</label><input name="cl_last_name" value="<?php echo $cl_last_name; ?>" /><br/><br/>
     <label class="icclabel">Phone Number</label><input name="cl_phone_number" value="<?php echo $cl_phone_number ?>" /><br/><br/>
     <label class="icclabel">Email</label><input name="cl_email_address" value="<?php echo $cl_email_address ?>" /><br/><br/>
     <label class="icclabel">Contact Method</label><?php echo build_drop_down(CNTC,$contact_id) ?><br/><br/> 
-     
+    </div>
+    
 </div>
 
 <div class="w3-third">
 
-    <h2>Location Information</h2>
+    <br/><br/><br/>
+    <div class="notes">
+    <h2>Location Information</h2><hr/>
     <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
     <label class="icclabel">Address 2</label><input name="cl_address2" value="<?php echo $cl_address2 ?>" /><br/><br/>
     <label class="icclabel">City</label><input name="cl_city" value="<?php echo $cl_city ?>" /><br/><br/>
     <label class="icclabel">Province</label><?php echo build_drop_down(PROV,$province_id) ?><br/><br/>
     <label class="icclabel">Country</label><?php echo build_drop_down(CNTR,$country_id) ?><br/><br/>
     <label class="icclabel">Postal Code</label><input name="cl_postal_code" value="<?php echo $cl_postal_code  ?>" /><br/><br/>
-   
+    </div>
+    
 </div>
 
 <div class="w3-third">
-
-    <h2>Assesment Information : <?php echo $assessment_id; ?></h2>
-    <label class="icclabel">Staff Required</label><input name="staff_required" value="<?php echo $staff_required ?>" /><br/><br/>
     
+    <br/><br/><br/>
+    <div class="notes">
+    <h2>Assesment Information : <?php echo $assessment_id; ?></h2><hr/>
+    <label class="icclabel">Staff Required</label><input name="staff_required" value="<?php echo $staff_required ?>" /><br/><br/>    
     <label class="icclabel">Equipment Required</label><br/>
     <label class="icclabel">Select All</label><input type="checkbox"  onclick="toggle(this);" name="equip[]" value="0"/><br/>
     <br/><?php build_check_bit_equip(SPEQ,"equip", $equip) ?><br/>
     <input type="submit" value="Submit" /> 
     <input type="reset" value="Reset"  />  
+    </div>
     
 </div>
 

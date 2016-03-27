@@ -327,7 +327,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-opacity,.w3-hover-opacity:hover{opacity:0.60}.w3-text-shadow{text-shadow:1px 1px 0 #444}.w3-text-shadow-white{text-shadow:1px 1px 0 #ddd}
 .icclabel { width:200px; display: inline-block;}
 .schedule{width:150px;}
-.resizedTextbox {width: 50px; height: 25px}
+.resizedTextbox {width: 75px; height: 25px}
 .resizedLabel{width: 50px; height: 25px}
 #MenuName{
     position:relative;
@@ -342,4 +342,20 @@ h2{
 }
 input.submit {
     width:150px;
+}
+.smlimg{
+    max-width:75%;
+    margin: 0 auto; 
+    max-height:325px;
+}
+.notes{
+    width:85%;
+    margin: 0 auto; 
+}
+a.dash{
+    color:blue;
+}
+#schedule {
+    padding:0;
+    border:1px black;
 }

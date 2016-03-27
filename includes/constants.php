@@ -3,14 +3,18 @@
 	//=========================
 	
 	// Database Constants
-	define("DB_NAME"	, 'icc_project'); 
     //define("DB_NAME"	, 'TESTING-ICC1'); 
+
+	define("DB_NAME"	, 'icc_project');     
 	define("DB_USER"	, 'redline_admin'); 
 	define("DB_PASSWORD", 'redline_access'); 
-    //define("DB_NAME"	, 'dcji1sldavs0ts'); 
-    //define("DB_USER"	, 'uwityljpwrsqju'); 
-	//define("DB_PASSWORD", 'OBnZlBE5jqpRFLUllAOfgpb8OA'); 
-	
+/*
+    define("DB_NAME"	, 'dcji1sldavs0ts'); 
+    define("DB_USER"	, 'uwityljpwrsqju'); 
+	define("DB_PASSWORD", 'OBnZlBE5jqpRFLUllAOfgpb8OA'); 
+    define("DB_HOST"    , "ec2-54-83-22-48.compute-1.amazonaws.com");    
+    //$connection = pg_connect('postgres://uwityljpwrsqju:OBnZlBE5jqpRFLUllAOfgpb8OA@ec2-54-83-22-48.compute-1.amazonaws.com:5432/dcji1sldavs0ts'); 
+	*/
 	// Cookies Expiry
 	define("EXPIRE"		,604800); 		// for 30 days storage
 	define("FEATURE"	,86400); 		// for 1 day storage
@@ -49,6 +53,7 @@
     define("STST"       ,"site_status");
     define("SRVR"       ,"services_required");
     define("SRVC"       ,"services");
+    define("VEND"       ,"vendor");
     
     
     // Column Names

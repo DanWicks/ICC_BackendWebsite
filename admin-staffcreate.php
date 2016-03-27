@@ -84,46 +84,52 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post" >
  
-    <h2><b>Enter New Staff Information</b></h2>  
     
-    <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
  
 <div class="w3-third">
    
-    <h3>Contact Information</h3>
+    <div class="notes">
+    <h1>Enter New Staff Information</h1><hr/>
+    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a></h3><br/>
+    <h2>Contact Information</h2><hr/>
     <br/>
     <label class="icclabel">First Name</label><input name="firstname"></input><br/><br/>
     <label class="icclabel">Last Name</label><input name="lastname"></input><br/><br/>
     <label class="icclabel">Phone Number</label><input name="phonenumber"></input><br/><br/>
     <label class="icclabel">Email Address</label><input name="emailaddress"></input><br/><br/>
     <label class="icclabel">Contact Method</label><?php build_drop_down(CNTC, $contact_methods); ?><br/><br/>
+    </div>
     
 </div>
 
 <div class="w3-third">
-        
-    <h3>Staff Address</h3>
-    <br/>
+    
+    <br/><br/><br/><br/>
+    <div class="notes">
+    <h2>Staff Address</h2><hr/>
     <label class="icclabel">Address</label><input name="address1"></input><br/><br/>
     <label class="icclabel">Address</label><input name="address2"></input><br/><br/>
     <label class="icclabel">City</label><input name="city"></input><br/><br/>
     <label class="icclabel">Province</label><?php build_drop_down(PROV, $province); ?><br/><br/>
     <label class="icclabel">Country</label><?php build_drop_down(CNTR, $countries); ?><br/><br/>
     <label class="icclabel">Postal Code</label><input name="postalcode"></input><br/><br/>
-        
+    </div>
+    
 </div>
 
 <div class="w3-third">
        
-    <h3>I.C.C. Information</h3>
-    <br/>
+    <br/><br/><br/><br/>
+    <div class="notes">
+    <h2>I.C.C. Information</h2><hr/>
     <label class="icclabel">Staff ID</label><label name="staff_id" value="<?php echo $staff_id ?>"><?php echo $staff_id ?></label><br/><br/>  
     <label class="icclabel">Staff Status</label><?php build_drop_down(STAT, $staffstatus); ?><br/><br/>  
     <label class="icclabel">Staff Type</label><?php build_drop_down(TYPE, $stafftype); ?><br/><br/>
     <label class="icclabel">Salary/Wage</label><input name="staff_wage"></input><br/><br/>      
     <label class="icclabel">Password</label><input name="password"></input><br/><br/>
     <input type="submit" value="Submit" /> 
-    <input type="reset" value="Reset"  />    
+    <input type="reset" value="Reset"  />  
+    </div>
     <br/>
     
 </div>

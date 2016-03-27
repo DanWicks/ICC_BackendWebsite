@@ -87,34 +87,29 @@
 <div class="w3-row-padding">
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-
-    <h2>Create a New Clients</h2>
-    
-    <p><a href="./admin-clients.php">Return to Client Dashboard</a></p>
  
 <div class="w3-third">
     
-    <p>Create New Client that will link the new Client to an Existing Location and Enter a Client name for Companies or enter Personal for Private Clients</p>
-    <img class="smlimg" src="Images/icc.png" alt="Immaculate Cleaning Concepts" width="100%" />  
+    <div class="notes">
+    <h1>Create a New Clients</h1><hr/>  
+    <h3><a class="dash" href="./admin-clients.php">Return to Client Dashboard</a></h3><br/>
+    <h2>Contact Information</h2><hr/>
+    <label class="icclabel">Client ID</label><label name="client_id"><?php echo $client_id; ?></label><br/><br/>
+    <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name;  ?>"></input><br/><br/>    
+    <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
+    <label class="icclabel">Contact Last Name</label><input name="cl_last_name" value="<?php echo $cl_last_name; ?>" /><br/><br/>
+    <label class="icclabel">Phone Number</label><input name="cl_phone_number" value="<?php echo $cl_phone_number ?>" /><br/><br/>
+    <label class="icclabel">Email</label><input name="cl_email_address" value="<?php echo $cl_email_address ?>" /><br/><br/>
+    <label class="icclabel">Contact Method</label><?php echo build_drop_down(CNTC,$contact_id) ?><br/><br/> 
+    </div>
      
 </div>
 
 <div class="w3-third">
 
-    <h2>Contact Information</h2>
-    <label class="icclabel">Client ID</label><label name="client_id"><?php echo $client_id; ?></label><br/><br/>
-    <label class="icclabel">Client Name</label><input name="client_name" value="<?php echo $client_name;  ?>"></input><br/><br/>    
-      <label class="icclabel">Contact First Name</label><input name="cl_first_name" value="<?php echo $cl_first_name; ?>" /><br/><br/>
-    <label class="icclabel">Contact Last Name</label><input name="cl_last_name" value="<?php echo $cl_last_name; ?>" /><br/><br/>
-    <label class="icclabel">Phone Number</label><input name="cl_phone_number" value="<?php echo $cl_phone_number ?>" /><br/><br/>
-    <label class="icclabel">Email</label><input name="cl_email_address" value="<?php echo $cl_email_address ?>" /><br/><br/>
-    <label class="icclabel">Contact Method</label><?php echo build_drop_down(CNTC,$contact_id) ?><br/><br/> 
-    
-</div>
-
-<div class="w3-third">
-
-    <h2>Billing Location</h2>
+    <br/><br/><br/>
+    <div class="notes">
+    <h2>Billing Location</h2><hr/>
     <label class="icclabel">Location ID</label><label name="client_id"><?php echo $location_id; ?></label><br/><br/>
      <label class="icclabel">Address 1</label><input name="cl_address1" value="<?php echo $cl_address1 ?>" /><br/><br/>
     <label class="icclabel">Address 2</label><input name="cl_address2" value="<?php echo $cl_address2 ?>" /><br/><br/>
@@ -124,6 +119,17 @@
     <label class="icclabel">Postal Code</label><input name="cl_postal_code" value="<?php echo $cl_postal_code  ?>" /><br/><br/>
     <input type="submit" value="Submit" /> 
     <input type="reset" value="Reset"  />    
+    </div>
+    
+</div>
+
+<div class="w3-third">
+    
+    <br/><br/><br/>
+    <div class="notes">
+    <p>Create New Client that will link the new Client to an Existing Location and Enter a Client name for Companies or enter Personal for Private Clients</p>
+    <img class="smlimg" src="Images/icc.png" alt="Immaculate Cleaning Concepts" />  
+    </div>
  
 </div>
 

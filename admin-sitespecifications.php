@@ -164,47 +164,51 @@ $conn = db_connect();
 </script>
 <div class="w3-row-padding">
 
-    <h2><b>Site Specifications</b></h2>
-    
-    <p><a href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">Return to Site Information </a></a>
-    
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
 <div class="w3-third">
 
-    <h3>Assessment Details</h3>
+    <div class="notes">
+    <h1>Site Specifications</h1><hr/>  
+    <h3><a class="dash" href="./admin-sitesinfo.php?site_id=<?php echo $site_id; ?> ">Return to Site Information </a></h3><br/>
+    <h2>Assessment Details</h2><hr/>
     <label class="icclabel">Client ID</label><label><?php echo $client_id ?></label><br/><br/>
     <label class="icclabel">Location ID</label><label><?php echo $location_id ?></label><br/><br/>
     <label class="icclabel">Required Staff</label><label><?php echo $la_staff_number ?></label><br/><br/>
     <label class="icclabel">Equipment Required</label><br/>   
     <br/><?php build_label_list_equip(SPEQ,"equipment") ?><br/>
-    <h3>Contract</h3>
+    <h2>Contract</h2><hr/>
     <label class="icclabel">Contract ID</label><label><?php echo $contract_id ?></label><br/><br/>
     <label class="icclabel">Date Format</label><label class="icclabel">YYYY-MM-DD</label><br/>
     <label class="icclabel">Contract Date</label><input name="contract_create_date" value="<?php echo $contract_create_date ?>"></input><br/><br/>
     <label class="icclabel">Start Date</label><input name="contract_start_date" value="<?php echo $contract_start_date ?>"></input><br/><br/>
     <label class="icclabel">End Date</label><input name="contract_end_date" value="<?php echo $contract_end_date ?>"></input><br/><br/>
+    </div>
     
 </div>
 
 <div class="w3-third">  
     
-    <h3>Site Requirements</h3>
+    <div class="notes">
+    <h2>Site Requirements</h2><hr/>
     <label class="icclabel">Number of Staff</label><input name="required_staff" value="<?php echo $required_staff ?>"></input><br/><br/>
-    <h3>Services Required</h3><br/>
+    <h2>Services Required</h2><br/><hr/>
     <label class="icclabel">Select All</label><input type="checkbox"  onclick="toggleservice(this);" name="service[]" value="0"/>
     <br/><?php build_check_bit_services(SRVC,"service", $service) ?>
-    <h3>Equipment Required</h3><br/>
+    <h2>Equipment Required</h2><br/><hr/>
     <label class="icclabel">Select All</label><input type="checkbox"  onclick="toggle(this);" name="equip[]" value="0"/>
     <br/><?php build_check_bit_equip(SPEQ,"equip", $equip) ?><br/>
-    <h3>Contract Notes</h3>
+    <h2>Contract Notes</h2><hr/>
     <textarea name="contract_requirements" rows="4" cols="45"><?php echo $contract_requirements; ?></textarea><br/><br/>
- 
+    </div>
+    
 </div>
 
 <div class="w3-third">
   
-    <h3>Cleaning Schedule</h3>
+    <div class="notes">
+    <h2>Cleaning Schedule</h2>
+    <h2>UNDER CONSTRUCTION</h2><hr/>
     <label class="icclabel">Sunday</label><input></input><br/><br/>
     <label class="icclabel">Monday</label><input></input><br/><br/>
     <label class="icclabel">Tuesday</label><input></input><br/><br/>
@@ -214,7 +218,8 @@ $conn = db_connect();
     <label class="icclabel">Saturday</label><input></input><br/><br/>
     <input type="submit" value="Submit" /> 
     <input type="reset" value="Reset"  /> 
- 
+    </div>
+    
 </div>
 
 </form>

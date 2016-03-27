@@ -25,11 +25,11 @@
 
 <div class="w3-row-padding">
 
-    <h2><b>Staff Schedule</b></h2>    
-    
-    <p><a href="./admin-staff.php">Return to Staff Dashboard</a></p>
-
+    <div class="notes">
+    <h1>Staff Schedule (UNDER CONSTRUCTION)</h1><hr/>
+    <h3><a class="dash" href="./admin-staff.php">Return to Staff Dashboard</a></h3>
     <?php build_schedule(); ?><br/><br/>
+     </div>
      
 </div>
 
